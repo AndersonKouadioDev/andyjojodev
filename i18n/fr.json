@@ -1,0 +1,109 @@
+{
+  "navigation": {
+    "resume": "Curriculum Vitae",
+    "projects": "Projets",
+    "skills": "Compétences",
+    "contact": "Contact"
+  },
+  "resume": {
+    "title": "Développeur Fullstack Web & Mobile – Expert ReactJS / Next.js / NestJS",
+    "name": "Anderson Kouadio",
+    "location": "Abidjan, Côte d'Ivoire",
+    "email": "andersonkouadio0109@gmail.com",
+    "phone": "+225 0554020623 / 0768566647",
+    "linkedIn": "https://www.linkedin.com/in/n%E2%80%99guessan-joseph-anderson-kouadio-742645341/",
+    "github": "https://github.com/AndersonKouadioDev",
+    "biography": "Développeur Fullstack passionné avec une expertise solide en JavaScript et\n      en technologies modernes comme React, Next.js, TypeScript et React Native.\n      Fort de plusieurs expériences sur des projets à forte valeur ajoutée (ERP,\n      plateformes SaaS, e-commerce, apps mobiles), je conçois des interfaces\n      performantes et centrées utilisateur. Je combine rigueur technique, sens\n      du produit, pratiques DevOps et une forte culture UX/UI. Autonome mais\n      toujours tourné vers la collaboration, je m'adapte rapidement aux\n      contextes complexes."
+  },
+  "resume_section": {
+    "professional_profile": "Profile professionnel",
+    "technical_skills": "Compétences techniques",
+    "professional_experience": "Expérience professionnelle",
+    "education": "Formation & diplômes",
+    "key_expertise": "Expertises clés",
+    "language": "Langues",
+    "interests": "Centres d'intérêt"
+  },
+  "professional_experience": {
+    "experience_1": {
+      "title": "Développeur Fullstack (CDD)",
+      "company": "INNOV IMMOBILIER – Abidjan",
+      "period": "Oct. 2023 – Mai 2024",
+      "description": "Conception d'un ERP métier modulaire avec React, Tailwind CSS, PostgreSQL et Laravel <br/> Création de fonctionnalités complexes (gestion de réservations, maintenance IT) <br/> Mise en place de pipelines CI/CD et gestion de versions avec GitHub"
+    },
+    "experience_2": {
+      "title": "Développeur Fullstack (Freelance)",
+      "company": "AITECH GROUPE – Abidjan",
+      "period": "Mars 2023 – Juillet 2023",
+      "description": "Développement d'un ERP pour Tropic105, architecture basée sur React + Zustand et Django <br/> Gestion de la navigation, sécurisation des routes, design system personnalisé <br/> Collaboration agile avec les équipes produit et design (Figma + Notion)"
+    },
+    "experience_3": {
+      "title": "Développeur Web (Stage)",
+      "company": "Merradis Group – Abidjan",
+      "period": "Mai 2022 – Fév. 2023",
+      "description": "Réalisation complète d'un ERP front-back, participation à la stratégie produit <br/> Rédaction de documentation technique et support de livraison client"
+    },
+    "experience_4": {
+      "title": "Infographiste (Freelance)",
+      "company": "Mairie de Grand-Bassam",
+      "period": "Jan. 2022 – Mars 2022",
+      "description": "Création de supports digitaux (affiches, newsletters, vidéos) <br/> Optimisation des contenus visuels pour la communication municipale"
+    }
+  },
+  "education": {
+    "diploma_1": {
+      "title": "Certification ReactJS",
+      "school": "GOMYCODE Côte d'Ivoire",
+      "year": "Jan. 2022 – Juin 2022"
+    },
+    "diploma_2": {
+      "title": "BTS Développeur d'Application (IDA)",
+      "school": "HETEC",
+      "year": "2020 – 2021"
+    },
+    "diploma_3": {
+      "title": "Licence Pro Informatique Décisionnelle (ID)",
+      "school": "HETEC",
+      "year": "2020 – 2021"
+    },
+    "diploma_4": {
+      "title": "Baccalauréat Scientifique",
+      "school": "Lycée Djibo Soumako",
+      "year": "2018 – 2019"
+    }
+  },
+  "expertise": {
+    "expertise_1": {
+      "title": "Applications Web & Mobile",
+      "description": "Développement d'applications responsives et performantes"
+    },
+    "expertise_2": {
+      "title": "DevOps & CI/CD",
+      "description": "Intégration continue, testing et déploiement sécurisé"
+    },
+    "expertise_3": {
+      "title": "UX/UI Design",
+      "description": "Design system, accessibilité et ergonomie utilisateur"
+    },
+    "expertise_4": {
+      "title": "Gestion de projet",
+      "description": "Méthodes Agile/Scrum, communication équipe tech & produit"
+    }
+  },
+  "language": {
+    "french": {
+      "title": "Français",
+      "level": "Courant"
+    },
+    "english": {
+      "title": "Anglais",
+      "level": "Bilingue"
+    }
+  },
+  "interests": "Entrepreneuriat tech • Bénévolat IT • Formation Développement FullStack (Next.js et NestJS) • Création de contenu technique • Design • Sport • Lecture",
+  "contact_page": {
+    "title_section_1":"Informations de contact",
+    "title_section_2":"Envoyez-moi un message",
+    "send": "Envoyer"
+  }
+}

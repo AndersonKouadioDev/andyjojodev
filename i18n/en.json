@@ -1,0 +1,109 @@
+{
+  "navigation": {
+    "resume": "Resume",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "resume": {
+    "title": "Fullstack Web & Mobile Developer – Expert in ReactJS / Next.js / NestJS",
+    "name": "Anderson Kouadio",
+    "location": "Abidjan, Côte d'Ivoire",
+    "email": "andersonkouadio0109@gmail.com",
+    "phone": "+225 0554020623 / 0768566647",
+    "linkedIn": "https://www.linkedin.com/in/n%E2%80%99guessan-joseph-anderson-kouadio-742645341/",
+    "github": "https://github.com/AndersonKouadioDev",
+    "biography": "Passionate Fullstack Developer with solid expertise in JavaScript and modern technologies such as React, Next.js, TypeScript, and React Native. With multiple experiences on high-value projects (ERP, SaaS platforms, e-commerce, mobile apps), I design high-performance, user-centered interfaces. I combine technical rigor, product sense, DevOps practices, and a strong UX/UI culture. Autonomous yet always collaborative, I adapt quickly to complex environments."
+  },
+  "resume_section": {
+    "professional_profile": "Professional profile",
+    "technical_skills": "Technical skills",
+    "professional_experience": "Professional experience",
+    "education": "Education & diplomas",
+    "key_expertise": "Key expertise",
+    "language": "Languages",
+    "interests": "Interests"
+  },
+  "professional_experience": {
+    "experience_1": {
+      "title": "Fullstack Developer (Fixed-term contract)",
+      "company": "INNOV IMMOBILIER – Abidjan",
+      "period": "Oct. 2023 – May 2024",
+      "description": "Designed a modular business ERP using React, Tailwind CSS, PostgreSQL, and Laravel <br/> Built complex features (reservation management, IT maintenance) <br/> Set up CI/CD pipelines and version control with GitHub"
+    },
+    "experience_2": {
+      "title": "Fullstack Developer (Freelance)",
+      "company": "AITECH GROUPE – Abidjan",
+      "period": "Mar. 2023 – Jul. 2023",
+      "description": "Developed an ERP for Tropic105 with architecture based on React + Zustand and Django <br/> Managed navigation, route protection, and custom design system <br/> Worked in agile collaboration with product and design teams (Figma + Notion)"
+    },
+    "experience_3": {
+      "title": "Web Developer (Internship)",
+      "company": "Merradis Group – Abidjan",
+      "period": "May 2022 – Feb. 2023",
+      "description": "Fully developed a front-to-back ERP and contributed to product strategy <br/> Wrote technical documentation and supported client delivery"
+    },
+    "experience_4": {
+      "title": "Graphic Designer (Freelance)",
+      "company": "City Hall of Grand-Bassam",
+      "period": "Jan. 2022 – Mar. 2022",
+      "description": "Created digital materials (posters, newsletters, videos) <br/> Optimized visual content for municipal communication"
+    }
+  },
+  "education": {
+    "diploma_1": {
+      "title": "ReactJS Certification",
+      "school": "GOMYCODE Côte d'Ivoire",
+      "year": "Jan. 2022 – Jun. 2022"
+    },
+    "diploma_2": {
+      "title": "HND in Application Development (IDA)",
+      "school": "HETEC",
+      "year": "2020 – 2021"
+    },
+    "diploma_3": {
+      "title": "Bachelor's in Decision Support IT (ID)",
+      "school": "HETEC",
+      "year": "2020 – 2021"
+    },
+    "diploma_4": {
+      "title": "Science Baccalaureate",
+      "school": "Lycée Djibo Soumako",
+      "year": "2018 – 2019"
+    }
+  },
+  "expertise": {
+    "expertise_1": {
+      "title": "Web & Mobile Applications",
+      "description": "Development of responsive and high-performance applications"
+    },
+    "expertise_2": {
+      "title": "DevOps & CI/CD",
+      "description": "Continuous integration, testing, and secure deployment"
+    },
+    "expertise_3": {
+      "title": "UX/UI Design",
+      "description": "Design systems, accessibility, and user-friendly interfaces"
+    },
+    "expertise_4": {
+      "title": "Project Management",
+      "description": "Agile/Scrum methodologies, communication between tech & product teams"
+    }
+  },
+  "language": {
+    "french": {
+      "title": "French",
+      "level": "Fluent"
+    },
+    "english": {
+      "title": "English",
+      "level": "Bilingual"
+    }
+  },
+  "interests": "Tech entrepreneurship • IT volunteering • FullStack development training (Next.js and NestJS) • Technical content creation • Design • Sports • Reading",
+  "contact_page": {
+    "title_section_1": "Contact Information",
+    "title_section_2": "Send Me a Message",
+    "send": "Send"
+  }
+}
