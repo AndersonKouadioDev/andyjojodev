@@ -286,6 +286,8 @@
     "filter_web": "Web"
   },
   "contact_page": {
+    "eyebrow": "Contact",
+    "open_to_work_title": "Open to work",
     "title_1": "Travaillons",
     "title_2": "ensemble",
     "subtitle": "Disponible pour des missions freelance, des opportunités full-time ou des collaborations techniques.",

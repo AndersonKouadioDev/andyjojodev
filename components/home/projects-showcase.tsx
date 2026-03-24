@@ -142,7 +142,7 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
           {showcased.map((project, i) => (
             <div
               key={i}
-              className="project-card glass rounded-2xl overflow-hidden border border-white/5 hover:border-primary/25 transition-all duration-300 group cursor-pointer"
+              className="project-card glass rounded-2xl overflow-hidden border border-border/25 hover:border-primary/25 transition-all duration-300 group cursor-pointer"
               onMouseEnter={() => setActiveProject(i)}
               onMouseLeave={() => setActiveProject(null)}
               onMouseMove={(e) => handleMouseMove(e, i)}

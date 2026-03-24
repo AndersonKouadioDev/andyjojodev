@@ -165,7 +165,7 @@ export function AboutSection({ biography, stats }: AboutSectionProps) {
             {stats.map((stat, i) => (
               <div
                 key={i}
-                className="stat-card glass rounded-2xl p-8 flex flex-col gap-2 border border-white/5 hover:border-primary/20 transition-colors duration-300 group"
+                className="stat-card glass rounded-2xl p-8 flex flex-col gap-2 border border-border/25 hover:border-primary/20 transition-colors duration-300 group"
               >
                 <span className="font-display text-5xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                   <CounterUp

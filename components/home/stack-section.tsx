@@ -124,7 +124,7 @@ export function StackSection() {
           {filtered.map((skill) => (
             <PerspectiveCard
               key={skill.name}
-              className="skill-card glass rounded-2xl p-4 border border-white/5 hover:border-primary/30 cursor-default group"
+              className="skill-card glass rounded-2xl p-4 border border-border/25 hover:border-primary/30 cursor-default group"
               intensity={10}
             >
               <div className="flex flex-col items-center gap-3 py-2">

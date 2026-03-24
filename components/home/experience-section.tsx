@@ -119,7 +119,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
                     "w-5 h-5 rounded-full border-2 items-center justify-center",
                     exp.isLatest
                       ? "border-primary bg-primary shadow-[0_0_12px_rgba(255,77,0,0.5)]"
-                      : "border-white/20 bg-background group-hover:border-primary/60 transition-colors duration-300"
+                      : "border-border/40 bg-background group-hover:border-primary/60 transition-colors duration-300"
                   )}
                 >
                   {exp.isLatest && (
@@ -128,7 +128,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
                 </div>
 
                 {/* Card */}
-                <div className="glass rounded-2xl p-6 md:p-8 border border-white/5 hover:border-primary/20 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
+                <div className="glass rounded-2xl p-6 md:p-8 border border-border/25 hover:border-primary/20 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                     <div>
                       <h3 className="font-display text-xl font-semibold text-foreground">
@@ -138,7 +138,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
                         {exp.company}
                       </p>
                     </div>
-                    <span className="font-mono-brand text-xs text-muted-foreground border border-white/10 px-3 py-1.5 rounded-lg whitespace-nowrap">
+                    <span className="font-mono-brand text-xs text-muted-foreground border border-border/40 px-3 py-1.5 rounded-lg whitespace-nowrap">
                       {exp.period}
                     </span>
                   </div>

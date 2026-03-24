@@ -90,14 +90,15 @@ function RadarChart() {
             return `${p.x},${p.y}`;
           }).join(" ")}
           fill="none"
-          stroke="rgba(255,255,255,0.06)"
+          stroke="currentColor"
+          strokeOpacity="0.1"
           strokeWidth="1"
         />
       ))}
       {/* Axes */}
       {RADAR_SKILLS.map((_, i) => {
         const outer = getPoint(i, maxR);
-        return <line key={i} x1={cx} y1={cy} x2={outer.x} y2={outer.y} stroke="rgba(255,255,255,0.08)" strokeWidth="1" />;
+        return <line key={i} x1={cx} y1={cy} x2={outer.x} y2={outer.y} stroke="currentColor" strokeOpacity="0.12" strokeWidth="1" />;
       })}
       {/* Data fill */}
       <path className="radar-fill" d={dataPath} fill="rgba(255,77,0,0.1)" stroke="none" />
@@ -114,7 +115,8 @@ function RadarChart() {
             textAnchor="middle"
             dominantBaseline="middle"
             fontSize="11"
-            fill="rgba(250,250,250,0.6)"
+            fill="currentColor"
+            fillOpacity="0.6"
             fontFamily="JetBrains Mono, monospace"
           >
             {skill.label}
@@ -207,7 +209,7 @@ export default function SkillsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Left — Radar */}
           <div className="flex flex-col items-center gap-8">
-            <div className="glass rounded-3xl p-10 border border-white/5 flex flex-col items-center gap-6">
+            <div className="glass rounded-3xl p-10 border border-border/25 flex flex-col items-center gap-6">
               <h2 className="font-display text-xl font-semibold text-foreground self-start">
                 {st("radar_title")}
               </h2>
@@ -215,7 +217,7 @@ export default function SkillsPage() {
             </div>
 
             {/* Soft skills */}
-            <div className="w-full glass rounded-3xl p-8 border border-white/5">
+            <div className="w-full glass rounded-3xl p-8 border border-border/25">
               <h2 className="font-display text-xl font-semibold text-foreground mb-6">
                 {st("soft_title")}
               </h2>
@@ -239,7 +241,7 @@ export default function SkillsPage() {
               return (
                 <PerspectiveCard
                   key={cat}
-                  className="glass rounded-2xl p-8 border border-white/5 hover:border-primary/20 transition-colors"
+                  className="glass rounded-2xl p-8 border border-border/25 hover:border-primary/20 transition-colors"
                   intensity={5}
                 >
                   <h3 className="font-display text-lg font-semibold text-foreground mb-6 flex items-center gap-3">

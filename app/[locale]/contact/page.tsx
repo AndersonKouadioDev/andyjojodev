@@ -106,7 +106,7 @@ export default function ContactPage() {
         {/* Header */}
         <div className="contact-header flex flex-col gap-4 mb-16">
           <span className="font-mono-brand text-xs text-primary tracking-widest uppercase">
-            — Contact
+            — {contactT("eyebrow")}
           </span>
           <h1 className="font-display text-section text-foreground">
             {contactT("title_1")} <span className="text-primary">{contactT("title_2")}</span>
@@ -124,7 +124,7 @@ export default function ContactPage() {
               <div className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full bg-green-400 animate-pulse" />
                 <div>
-                  <p className="font-display font-semibold text-foreground">Open to work</p>
+                  <p className="font-display font-semibold text-foreground">{contactT("open_to_work_title")}</p>
                   <p className="text-sm text-muted-foreground mt-0.5">
                     {contactT("available_now")}
                   </p>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                     target={item.href?.startsWith("http") ? "_blank" : undefined}
                     rel={item.href?.startsWith("http") ? "noopener noreferrer" : undefined}
                     className={cn(
-                      "contact-card glass rounded-2xl p-5 border border-white/5",
+                      "contact-card glass rounded-2xl p-5 border border-border/30",
                       "hover:border-primary/25 transition-all duration-200",
                       "flex items-center gap-4 group w-full",
                       item.href && "cursor-pointer"
@@ -174,7 +174,7 @@ export default function ContactPage() {
 
           {/* Right — Form */}
           <div className="lg:col-span-3">
-            <div className="contact-card glass rounded-2xl p-8 border border-white/5">
+            <div className="contact-card glass rounded-2xl p-8 border border-border/30">
               <h2 className="font-display text-xl font-semibold text-foreground mb-8">
                 {contactT("title_section_2")}
               </h2>
@@ -193,7 +193,7 @@ export default function ContactPage() {
                           <FormControl>
                             <Input
                               {...field}
-                              className="glass border-white/10 focus:border-primary/50 rounded-xl h-12 bg-transparent text-foreground placeholder:text-muted-foreground/40"
+                              className="border-border/50 focus:border-primary/50 rounded-xl h-12 bg-background/60 text-foreground placeholder:text-muted-foreground/40"
                               placeholder="Anderson Kouadio"
                             />
                           </FormControl>
@@ -213,7 +213,7 @@ export default function ContactPage() {
                             <Input
                               {...field}
                               type="email"
-                              className="glass border-white/10 focus:border-primary/50 rounded-xl h-12 bg-transparent text-foreground placeholder:text-muted-foreground/40"
+                              className="border-border/50 focus:border-primary/50 rounded-xl h-12 bg-background/60 text-foreground placeholder:text-muted-foreground/40"
                               placeholder="email@exemple.com"
                             />
                           </FormControl>
@@ -234,7 +234,7 @@ export default function ContactPage() {
                         <FormControl>
                           <Input
                             {...field}
-                            className="glass border-white/10 focus:border-primary/50 rounded-xl h-12 bg-transparent text-foreground placeholder:text-muted-foreground/40"
+                            className="border-border/50 focus:border-primary/50 rounded-xl h-12 bg-background/60 text-foreground placeholder:text-muted-foreground/40"
                             placeholder={contactT("subject_input_placeholder")}
                           />
                         </FormControl>
@@ -255,7 +255,7 @@ export default function ContactPage() {
                           <Textarea
                             {...field}
                             rows={5}
-                            className="glass border-white/10 focus:border-primary/50 rounded-xl bg-transparent text-foreground placeholder:text-muted-foreground/40 resize-none"
+                            className="border-border/50 focus:border-primary/50 rounded-xl bg-background/60 text-foreground placeholder:text-muted-foreground/40 resize-none"
                             placeholder={contactT("message_input_placeholder")}
                           />
                         </FormControl>

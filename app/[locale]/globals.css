@@ -248,19 +248,29 @@
 }
 
 /* ─────────────────────────────────────────────
-   GLASSMORPHISM
+   GLASSMORPHISM — theme-aware
 ───────────────────────────────────────────── */
 .glass {
-  background: oklch(1 0 0 / 4%);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  /* Light mode: frosted white */
+  background: oklch(0.99 0 0 / 65%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid oklch(0 0 0 / 8%);
+}
+.dark .glass {
+  /* Dark mode: subtle dark tint */
+  background: oklch(1 0 0 / 6%);
   border: 1px solid oklch(1 0 0 / 8%);
 }
 .glass-light {
-  background: oklch(0 0 0 / 3%);
+  background: oklch(0 0 0 / 4%);
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
   border: 1px solid oklch(0 0 0 / 8%);
+}
+.dark .glass-light {
+  background: oklch(1 0 0 / 4%);
+  border: 1px solid oklch(1 0 0 / 8%);
 }
 
 /* ─────────────────────────────────────────────

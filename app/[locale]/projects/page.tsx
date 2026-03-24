@@ -147,7 +147,7 @@ export default function ProjectsPage() {
           {filtered.map((project, i) => (
             <div
               key={`${project.title}-${i}`}
-              className="project-item glass rounded-2xl overflow-hidden border border-white/5 hover:border-primary/25 transition-all duration-300 group cursor-pointer"
+              className="project-item glass rounded-2xl overflow-hidden border border-border/25 hover:border-primary/25 transition-all duration-300 group cursor-pointer"
               onMouseEnter={() => setHovered(projects.indexOf(project))}
               onMouseLeave={() => setHovered(null)}
             >

@@ -67,7 +67,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
             return (
               <PerspectiveCard
                 key={i}
-                className="service-card glass rounded-2xl p-8 border border-white/5 hover:border-primary/25 group cursor-default"
+                className="service-card glass rounded-2xl p-8 border border-border/25 hover:border-primary/25 group cursor-default"
                 intensity={8}
               >
                 <div className="flex flex-col gap-5">

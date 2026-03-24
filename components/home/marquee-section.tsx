@@ -10,7 +10,7 @@ const STACK_ITEMS = [
 
 export function MarqueeSection() {
   return (
-    <div className="relative py-5 overflow-hidden border-y border-white/5">
+    <div className="relative py-5 overflow-hidden border-y border-border/20">
       {/* Top row — left */}
       <div className="bg-primary py-3 mb-px">
         <MarqueeTicker
