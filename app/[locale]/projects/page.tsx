@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import { SofaSection } from "@/components/home/sofa-section";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,10 +90,23 @@ export default function ProjectsPage() {
     });
   };
 
+  // First 3 projects as hotspot data
+  const hotspotProjects = projects.slice(0, 3).map((p) => ({
+    title: p.title,
+    description: p.description,
+    role: p.role,
+    tags: p.tags,
+    category: p.category,
+    anchor: "projects-grid",
+  }));
+
   return (
     <div className="min-h-screen bg-background cursor-none-desktop">
       <CustomCursor />
       <MainNav />
+
+      {/* ── Immersive sofa hero ── */}
+      <SofaSection projects={hotspotProjects} />
 
       {/* Hover preview */}
       <div
@@ -106,7 +120,7 @@ export default function ProjectsPage() {
         />
       </div>
 
-      <div ref={sectionRef} className="max-w-7xl mx-auto px-6 md:px-10 pt-32 pb-24">
+      <div id="projects-grid" ref={sectionRef} className="max-w-7xl mx-auto px-6 md:px-10 pt-20 pb-24">
         {/* Header */}
         <div className="projects-header flex flex-col gap-4 mb-14">
           <span className="font-mono-brand text-xs text-primary tracking-widest uppercase">

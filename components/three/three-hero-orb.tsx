@@ -9,7 +9,7 @@ function StatueMesh() {
   const groupRef = useRef<THREE.Group>(null);
   const ringRef = useRef<THREE.Mesh>(null);
   const modelRef = useRef<THREE.Group>(null);
-  const { scene } = useGLTF("/models/ancient-baoule-queen-statue/source/model.glb");
+  const { scene } = useGLTF("https://dvsxt5681pvqm.cloudfront.net/portfolio/models/ancient-baoule-queen-statue/source/model.glb");
 
   // Auto-fit: center and scale the model to fill the viewport
   useEffect(() => {
@@ -74,7 +74,7 @@ function StatueMesh() {
   );
 }
 
-useGLTF.preload("/models/ancient-baoule-queen-statue/source/model.glb");
+useGLTF.preload("https://dvsxt5681pvqm.cloudfront.net/portfolio/models/ancient-baoule-queen-statue/source/model.glb");
 
 interface ThreeHeroOrbProps {
   className?: string;

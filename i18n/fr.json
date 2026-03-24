@@ -283,7 +283,13 @@
     "filter_all": "Tous",
     "filter_mobile": "Web + Mobile",
     "filter_erp": "ERP / Logiciel",
-    "filter_web": "Web"
+    "filter_web": "Web",
+    "sofa_eyebrow": "Mes projets",
+    "sofa_title_1": "Prends place.",
+    "sofa_title_2": "Parlons projet.",
+    "sofa_hint": "Clique sur une bulle pour découvrir un projet",
+    "sofa_cta": "Voir les détails",
+    "sofa_scroll": "Explorer tous les projets"
   },
   "contact_page": {
     "eyebrow": "Contact",
