@@ -1,109 +1,307 @@
 {
   "navigation": {
+    "home": "Home",
     "resume": "Resume",
     "projects": "Projects",
     "skills": "Skills",
     "contact": "Contact"
   },
   "resume": {
-    "title": "Fullstack Web & Mobile Developer – Expert in ReactJS / Next.js / NestJS",
+    "title": "Tech Lead & Fullstack Web & Mobile Developer",
     "name": "Anderson Kouadio",
     "location": "Abidjan, Côte d'Ivoire",
     "email": "andersonkouadio0109@gmail.com",
-    "phone": "+225 0554020623 / 0768566647",
+    "phone": "+225 07 68 566 647",
     "linkedIn": "https://www.linkedin.com/in/n%E2%80%99guessan-joseph-anderson-kouadio-742645341/",
     "github": "https://github.com/AndersonKouadioDev",
-    "biography": "Passionate Fullstack Developer with solid expertise in JavaScript and modern technologies such as React, Next.js, TypeScript, and React Native. With multiple experiences on high-value projects (ERP, SaaS platforms, e-commerce, mobile apps), I design high-performance, user-centered interfaces. I combine technical rigor, product sense, DevOps practices, and a strong UX/UI culture. Autonomous yet always collaborative, I adapt quickly to complex environments."
+    "biography": "Passionate Fullstack Developer with solid expertise in JavaScript and modern technologies like React, Next.js, TypeScript and React Native. With multiple experiences on high-value projects (ERP, SaaS platforms, mobile apps), I design performant and user-centered interfaces. As a Tech Lead, I combine technical rigor, product sense and team management to deliver solutions that stand the test of time.",
+    "open_to_work": true
   },
   "resume_section": {
-    "professional_profile": "Professional profile",
-    "technical_skills": "Technical skills",
-    "professional_experience": "Professional experience",
-    "education": "Education & diplomas",
-    "key_expertise": "Key expertise",
+    "professional_profile": "Professional Profile",
+    "technical_skills": "Technical Skills",
+    "professional_experience": "Professional Experience",
+    "education": "Education & Degrees",
+    "key_expertise": "Key Expertise",
     "language": "Languages",
     "interests": "Interests"
   },
   "professional_experience": {
+    "experience_0": {
+      "title": "Tech Lead",
+      "company": "LUNION-LAB – Abidjan",
+      "period": "Sept. 2024 – Nov. 2025",
+      "description": "Led a team of 10 developers using Agile SCRUM methodology<br/>Designed and delivered Turbo-Delivery (4 apps: ERP, Client, Delivery, Partner)<br/>Designed and delivered Chicken-Nation (Backoffice, Mobile App, Website)<br/>Backend microservices development (Spring Boot, NestJS, WebSocket, Google Maps)<br/>10+ Next.js websites deployed to production<br/>System architecture, code reviews, team mentoring"
+    },
     "experience_1": {
-      "title": "Fullstack Developer (Fixed-term contract)",
+      "title": "Fullstack Developer (Fixed-term)",
       "company": "INNOV IMMOBILIER – Abidjan",
       "period": "Oct. 2023 – May 2024",
-      "description": "Designed a modular business ERP using React, Tailwind CSS, PostgreSQL, and Laravel <br/> Built complex features (reservation management, IT maintenance) <br/> Set up CI/CD pipelines and version control with GitHub"
+      "description": "Designed a modular business ERP with React, Tailwind CSS, PostgreSQL and Laravel<br/>Developed ERP Africa Booking (portal + Flutter mobile app)<br/>Built complex features (reservation management, IT maintenance)<br/>Set up CI/CD pipelines and version control with GitHub"
     },
     "experience_2": {
       "title": "Fullstack Developer (Freelance)",
       "company": "AITECH GROUPE – Abidjan",
-      "period": "Mar. 2023 – Jul. 2023",
-      "description": "Developed an ERP for Tropic105 with architecture based on React + Zustand and Django <br/> Managed navigation, route protection, and custom design system <br/> Worked in agile collaboration with product and design teams (Figma + Notion)"
+      "period": "March 2023 – July 2023",
+      "description": "Developed Tropic105 ERP with React + Zustand and Django architecture<br/>Developed POS Ciss St Moïse (Django + React.js, cash register & stock management)<br/>Navigation management, route security, custom design system<br/>Agile collaboration with product and design teams (Figma + Notion)"
     },
     "experience_3": {
       "title": "Web Developer (Internship)",
       "company": "Merradis Group – Abidjan",
       "period": "May 2022 – Feb. 2023",
-      "description": "Fully developed a front-to-back ERP and contributed to product strategy <br/> Wrote technical documentation and supported client delivery"
+      "description": "Full-stack ERP development, product strategy participation<br/>Technical documentation writing and client delivery support"
     },
     "experience_4": {
       "title": "Graphic Designer (Freelance)",
-      "company": "City Hall of Grand-Bassam",
-      "period": "Jan. 2022 – Mar. 2022",
-      "description": "Created digital materials (posters, newsletters, videos) <br/> Optimized visual content for municipal communication"
+      "company": "Grand-Bassam City Hall",
+      "period": "Jan. 2022 – March 2022",
+      "description": "Creation of digital materials (posters, newsletters, videos)<br/>Visual content optimization for municipal communication"
+    }
+  },
+  "projects": {
+    "project_1": {
+      "title": "Turbo-Delivery",
+      "description": "Complete multi-actor delivery platform: 4 interconnected applications (Admin ERP, Client App, Delivery App, Partner App). Microservices backend with real-time tracking and geolocation.",
+      "sector": "Food & Delivery",
+      "type": "Web + Mobile",
+      "role": "Tech Lead — Architecture & Development",
+      "tags": "Spring Boot|NestJS|Next.js|Flutter|WebSocket|Docker|Google Maps",
+      "category": "mobile",
+      "placeholder_image": "turbo-delivery",
+      "live_url": "",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_2": {
+      "title": "Chicken-Nation",
+      "description": "Restaurant platform with online ordering and real-time tracking. Includes a management backoffice, a client mobile app and a website.",
+      "sector": "Restaurant",
+      "type": "Web + Mobile",
+      "role": "Tech Lead — Architecture & Development",
+      "tags": "NestJS|Next.js|React Native|WebSocket|Google Maps",
+      "category": "mobile",
+      "placeholder_image": "chicken-nation",
+      "live_url": "",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_3": {
+      "title": "ERP Africa Booking",
+      "description": "Real estate management software with client portal and mobile app. Complete portfolio management, reservations and maintenance.",
+      "sector": "Real Estate",
+      "type": "Web + Mobile",
+      "role": "Fullstack Developer",
+      "tags": "Laravel|Next.js|Flutter|PostgreSQL|REST API",
+      "category": "erp",
+      "placeholder_image": "erp-africa-booking",
+      "live_url": "",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_4": {
+      "title": "POS Ciss St Moïse",
+      "description": "Complete point-of-sale system with cash management, real-time inventory and sales reports. Optimized interface for fast cashier use.",
+      "sector": "Commerce",
+      "type": "Web",
+      "role": "Fullstack Developer (Freelance)",
+      "tags": "Django|React.js|PostgreSQL|REST API",
+      "category": "erp",
+      "placeholder_image": "pos-ciss",
+      "live_url": "",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_5": {
+      "title": "ERP Tropic105",
+      "description": "Complete ERP system for business management. Modular architecture with secure navigation and custom design system.",
+      "sector": "Enterprise",
+      "type": "Web",
+      "role": "Fullstack Developer (Freelance)",
+      "tags": "Django|React.js|Zustand|Figma|REST API",
+      "category": "erp",
+      "placeholder_image": "tropic105",
+      "live_url": "",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_6": {
+      "title": "ERP Immobilier INNOV",
+      "description": "Modular business ERP for real estate management. Includes reservation management, IT maintenance and advanced reporting.",
+      "sector": "Real Estate",
+      "type": "Web",
+      "role": "Fullstack Developer (Fixed-term)",
+      "tags": "Laravel|React|Tailwind CSS|PostgreSQL|CI/CD",
+      "category": "erp",
+      "placeholder_image": "erp-innov",
+      "live_url": "",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    }
+  },
+  "stats": {
+    "years": "5+",
+    "years_label": "years of experience",
+    "projects": "10+",
+    "projects_label": "projects delivered",
+    "devs": "10",
+    "devs_label": "developers managed",
+    "sectors": "3",
+    "sectors_label": "sectors covered"
+  },
+  "services": {
+    "service_1": {
+      "title": "Web App",
+      "description": "Performant and scalable web applications with Next.js, React and TypeScript."
+    },
+    "service_2": {
+      "title": "Mobile App",
+      "description": "iOS & Android applications with React Native and Flutter."
+    },
+    "service_3": {
+      "title": "Backend & API",
+      "description": "Robust APIs and microservices architectures with NestJS, Spring Boot or Laravel."
+    },
+    "service_4": {
+      "title": "Tech Lead",
+      "description": "Technical leadership, system architecture, code review and team mentoring."
+    },
+    "service_5": {
+      "title": "UX/UI Design",
+      "description": "Design systems, prototyping and user-centered interfaces with Figma."
+    },
+    "service_6": {
+      "title": "DevOps & CI/CD",
+      "description": "Continuous deployment, Docker containerization and GitHub Actions pipelines."
     }
   },
   "education": {
     "diploma_1": {
       "title": "ReactJS Certification",
       "school": "GOMYCODE Côte d'Ivoire",
-      "year": "Jan. 2022 – Jun. 2022"
+      "year": "Jan. 2022 – June 2022"
     },
     "diploma_2": {
-      "title": "HND in Application Development (IDA)",
+      "title": "BTS Application Developer (IDA)",
       "school": "HETEC",
       "year": "2020 – 2021"
     },
     "diploma_3": {
-      "title": "Bachelor's in Decision Support IT (ID)",
+      "title": "Bachelor Decision Informatics",
       "school": "HETEC",
       "year": "2020 – 2021"
     },
     "diploma_4": {
-      "title": "Science Baccalaureate",
+      "title": "Scientific Baccalaureate",
       "school": "Lycée Djibo Soumako",
       "year": "2018 – 2019"
     }
   },
   "expertise": {
     "expertise_1": {
-      "title": "Web & Mobile Applications",
-      "description": "Development of responsive and high-performance applications"
+      "title": "Web & Mobile Apps",
+      "description": "Responsive and performant application development"
     },
     "expertise_2": {
       "title": "DevOps & CI/CD",
-      "description": "Continuous integration, testing, and secure deployment"
+      "description": "Continuous integration, testing and secure deployment"
     },
     "expertise_3": {
       "title": "UX/UI Design",
-      "description": "Design systems, accessibility, and user-friendly interfaces"
+      "description": "Design system, accessibility and user ergonomics"
     },
     "expertise_4": {
       "title": "Project Management",
-      "description": "Agile/Scrum methodologies, communication between tech & product teams"
+      "description": "Agile/Scrum methods, tech & product team communication"
     }
+  },
+  "soft_skills": {
+    "skill_1": "Leadership",
+    "skill_2": "Perseverance",
+    "skill_3": "Adaptability",
+    "skill_4": "Communication",
+    "skill_5": "Analytical thinking",
+    "skill_6": "Teamwork",
+    "skill_7": "Rigor",
+    "skill_8": "Autonomy"
   },
   "language": {
-    "french": {
-      "title": "French",
-      "level": "Fluent"
-    },
-    "english": {
-      "title": "English",
-      "level": "Bilingual"
-    }
+    "french": { "title": "French", "level": "Fluent" },
+    "english": { "title": "English", "level": "Bilingual" }
   },
-  "interests": "Tech entrepreneurship • IT volunteering • FullStack development training (Next.js and NestJS) • Technical content creation • Design • Sports • Reading",
+  "interests": "Tech entrepreneurship • IT volunteering • Fullstack training (Next.js and NestJS) • Technical content creation • Design • Sports • Reading",
+  "hero_section": {
+    "years_exp": "5+ years of experience",
+    "projects_delivered": "10+ projects delivered",
+    "cta_projects": "View my projects",
+    "cta_contact": "Contact me"
+  },
+  "about_section": {
+    "eyebrow": "About",
+    "title_1": "Passionate Fullstack",
+    "title_2": "Developer",
+    "title_3": "Tech Lead by",
+    "title_4": "conviction",
+    "photo_label": "Professional photo"
+  },
+  "experience_section": {
+    "eyebrow": "Experience",
+    "title_1": "Professional",
+    "title_2": "journey"
+  },
+  "stack_section": {
+    "eyebrow": "Tech stack",
+    "title_1": "Technologies",
+    "title_2": "mastered",
+    "filter_all": "All"
+  },
+  "projects_showcase": {
+    "eyebrow": "Recent projects",
+    "title_1": "What I've",
+    "title_2": "built",
+    "view_all": "All projects"
+  },
+  "services_section": {
+    "eyebrow": "Services",
+    "title_1": "What I",
+    "title_2": "build"
+  },
+  "contact_cta": {
+    "eyebrow": "Contact",
+    "title_1": "Have a project?",
+    "title_2": "Let's talk.",
+    "subtitle": "Available for freelance missions, full-time opportunities or technical collaborations.",
+    "cta_start": "Start a project",
+    "copyright": "All rights reserved"
+  },
+  "skills_page": {
+    "eyebrow": "Skills",
+    "title_1": "My",
+    "title_2": "expertise",
+    "subtitle": "Technologies and skills mastered over 5+ years of projects.",
+    "radar_title": "Overview",
+    "soft_title": "Soft Skills"
+  },
+  "projects_page": {
+    "eyebrow": "Portfolio",
+    "title_1": "All",
+    "title_2": "projects",
+    "subtitle": "Web, mobile and ERP software applications designed and delivered end to end.",
+    "filter_all": "All",
+    "filter_mobile": "Web + Mobile",
+    "filter_erp": "ERP / Software",
+    "filter_web": "Web"
+  },
   "contact_page": {
+    "title_1": "Let's work",
+    "title_2": "together",
+    "subtitle": "Available for freelance missions, full-time opportunities or technical collaborations.",
+    "available_now": "Available immediately",
+    "label_phone": "Phone",
+    "label_location": "Location",
     "title_section_1": "Contact Information",
-    "title_section_2": "Send Me a Message",
-    "send": "Send"
+    "title_section_2": "Send me a message",
+    "send": "Send Message",
+    "name_placeholder": "Your name",
+    "email_placeholder": "Your email",
+    "subject_placeholder": "Subject",
+    "message_placeholder": "Your message...",
+    "message_input_placeholder": "Describe your project or request...",
+    "subject_input_placeholder": "Freelance project, collaboration...",
+    "success_message": "Message sent!",
+    "success_description": "I'll get back to you as soon as possible."
   }
 }
