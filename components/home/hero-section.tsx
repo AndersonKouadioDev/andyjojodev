@@ -8,8 +8,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "next-themes";
 import { ArrowRight, MapPin, Github, Linkedin } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import dynamic from "next/dynamic";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-import { ThreeHeroOrb } from "@/components/three/three-hero-orb";
+const ThreeHeroOrb = dynamic(
+  () => import("@/components/three/three-hero-orb").then(m => ({ default: m.ThreeHeroOrb })),
+  { ssr: false }
+);
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";

@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
-import me_image from "@/public/me.jpeg";
+import me_image from "@/public/me.png";
 interface ResumeHeaderProps {
   name: string;
   title: string;

@@ -12,7 +12,11 @@ import { Mail, Phone, MapPin, Linkedin, Github, ArrowRight } from "lucide-react"
 import { MainNav } from "@/components/navigation/main-nav";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-import { ThreeCursorBlob } from "@/components/three/three-cursor-blob";
+import dynamic from "next/dynamic";
+const ThreeCursorBlob = dynamic(
+  () => import("@/components/three/three-cursor-blob").then(m => ({ default: m.ThreeCursorBlob })),
+  { ssr: false }
+);
 import { Button } from "@/components/ui/button";
 import {
   Form, FormControl, FormField, FormItem, FormLabel, FormMessage,

@@ -9,7 +9,11 @@ import { ArrowRight, Mail, Linkedin, Github } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { Button } from "@/components/ui/button";
-import { ThreeCursorBlob } from "@/components/three/three-cursor-blob";
+import dynamic from "next/dynamic";
+const ThreeCursorBlob = dynamic(
+  () => import("@/components/three/three-cursor-blob").then(m => ({ default: m.ThreeCursorBlob })),
+  { ssr: false }
+);
 import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);

@@ -11,7 +11,7 @@
     "name": "Anderson Kouadio",
     "location": "Abidjan, Côte d'Ivoire",
     "email": "andersonkouadio0109@gmail.com",
-    "phone": "+225 07 68 566 647",
+    "phone": "+225 05 54 02 06 23",
     "linkedIn": "https://www.linkedin.com/in/n%E2%80%99guessan-joseph-anderson-kouadio-742645341/",
     "github": "https://github.com/AndersonKouadioDev",
     "biography": "Développeur Fullstack passionné avec une expertise solide en JavaScript et en technologies modernes comme React, Next.js, TypeScript et React Native. Fort de plusieurs expériences sur des projets à forte valeur ajoutée (ERP, plateformes SaaS, apps mobiles), je conçois des interfaces performantes et centrées utilisateur. En tant que Tech Lead, je combine rigueur technique, sens du produit et management d'équipe pour livrer des solutions qui tiennent dans le temps.",
@@ -78,7 +78,7 @@
       "type": "Web + Mobile",
       "role": "Tech Lead — Architecture & développement",
       "tags": "NestJS|Next.js|React Native|WebSocket|Google Maps",
-      "category": "mobile|web",
+      "category": "mobile|web|fullstack",
       "placeholder_image": "chicken_nation_website",
       "live_url": "https://chicken-nation.com/",
       "github_url": "https://github.com/AndersonKouadioDev"
@@ -90,7 +90,7 @@
       "type": "Web + Mobile",
       "role": "Développeur Fullstack",
       "tags": "Laravel|Next.js|Flutter|PostgreSQL|REST API",
-      "category": "immobilier",
+      "category": "immobilier|fullstack",
       "placeholder_image": "africa_booking_desktop_short",
       "live_url": "https://africabooking.app/",
       "github_url": "https://github.com/AndersonKouadioDev"
@@ -102,7 +102,7 @@
       "type": "Web",
       "role": "Développeur Fullstack",
       "tags": "NestJS|Next.js|PostgreSQL|REST API|Tailwind CSS",
-      "category": "immobilier",
+      "category": "immobilier|fullstack",
       "placeholder_image": "lunion_booking_website",
       "live_url": "https://www.lunion-booking.com/",
       "github_url": "https://github.com/AndersonKouadioDev"
@@ -126,7 +126,7 @@
       "type": "Web",
       "role": "Développeur Fullstack (Freelance)",
       "tags": "Next.js|NestJS|Tailwind CSS|PostgreSQL|CRM",
-      "category": "immobilier",
+      "category": "immobilier|fullstack",
       "placeholder_image": "luxury_home_website",
       "live_url": "https://luxuryhomeabidjan.com/",
       "github_url": "https://github.com/AndersonKouadioDev"
@@ -138,7 +138,7 @@
       "type": "Web",
       "role": "Développeur Fullstack (Freelance)",
       "tags": "Next.js|NestJS|Tailwind CSS|PostgreSQL",
-      "category": "web",
+      "category": "web|fullstack",
       "placeholder_image": "ambassade_tchad_website",
       "live_url": "https://www.ambatchad.ci/fr",
       "github_url": "https://github.com/AndersonKouadioDev"

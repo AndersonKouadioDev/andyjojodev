@@ -26,7 +26,7 @@ const CAMERA_ZOOMED = [
   { pos: [ 0.0, 1.9, 4.5], target: [ 0.0, 1.5, 0] },
   { pos: [ 2.0, 1.9, 4.5], target: [ 1.5, 1.5, 0] },
 ];
-const CAMERA_DEFAULT = { pos: [0, 2.8, 5.5], target: [0, 0.8, 0] };
+const CAMERA_DEFAULT = { pos: [0, 3.6, 5.5], target: [0, 0.9, 0] };
 
 // ─── Hotspot bubble ───────────────────────────────────────────────────────────
 function HotspotBubble({
@@ -120,7 +120,7 @@ function SofaMesh({ isDark }: { isDark: boolean }) {
       if (mesh.isMesh) {
         const mat = mesh.material as THREE.MeshStandardMaterial;
         if (mat?.isMeshStandardMaterial) {
-          mat.envMapIntensity = isDark ? 0.35 : 1.4;
+          mat.envMapIntensity = isDark ? 0.65 : 1.4;
           mat.roughness = isDark ? mat.roughness : Math.min(mat.roughness + 0.05, 1);
           mat.needsUpdate = true;
         }
@@ -221,11 +221,15 @@ function SceneInner({
 
       {isDark ? (
         <>
-          <ambientLight intensity={0.12} color="#0d0812" />
-          <spotLight position={[1.5, 4.5, 3.5]} intensity={45} color="#fff8f0"
-            angle={0.38} penumbra={0.85} castShadow shadow-mapSize={[1024, 1024]} />
-          <spotLight position={[-2.5, 3, 4]} intensity={18} color="#ff6a20" angle={0.5} penumbra={1} />
-          <pointLight position={[0, -0.3, 2.5]} intensity={4} color="#ff4d00" />
+          {/* Base fill — enough to read the shape without washing it out */}
+          <ambientLight intensity={0.30} color="#1a1020" />
+          {/* Main key light — high and slightly right, warm white */}
+          <spotLight position={[2, 5.5, 4]} intensity={60} color="#fff4e8"
+            angle={0.36} penumbra={0.80} castShadow shadow-mapSize={[1024, 1024]} />
+          {/* Accent fill — left side, warm orange */}
+          <spotLight position={[-3, 3.5, 3.5]} intensity={22} color="#ff6020" angle={0.48} penumbra={1} />
+          {/* Front warm rim — ABOVE the sofa, not below */}
+          <pointLight position={[0, 1.8, 5]} intensity={8} color="#ffb060" />
         </>
       ) : (
         <>
@@ -271,7 +275,7 @@ interface ThreeSofaSceneProps {
 export function ThreeSofaScene({ isDark, isMobile, activeHotspot, onHotspotClick, showHotspots = true, className, style }: ThreeSofaSceneProps) {
   // Showroom mode: wider FOV + much closer camera to fill the panel
   const fov = showHotspots ? (isMobile ? 82 : 70) : 85;
-  const camPos: [number, number, number] = showHotspots ? [0, 2.8, 5.5] : [0, 1.6, 3.8];
+  const camPos: [number, number, number] = showHotspots ? [0, 3.6, 5.5] : [0, 1.6, 3.8];
   return (
     <div className={className} style={{ touchAction: "none", ...style }}>
       <Canvas
@@ -286,4 +290,6 @@ export function ThreeSofaScene({ isDark, isMobile, activeHotspot, onHotspotClick
   );
 }
 
-useGLTF.preload(MODEL_URL);
+if (typeof window !== "undefined") {
+  useGLTF.preload(MODEL_URL);
+}

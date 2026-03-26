@@ -7,7 +7,11 @@ import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import { ThreeSofaScene } from "@/components/three/three-sofa-scene";
+import dynamic from "next/dynamic";
+const ThreeSofaScene = dynamic(
+  () => import("@/components/three/three-sofa-scene").then(m => ({ default: m.ThreeSofaScene })),
+  { ssr: false }
+);
 import { cn } from "@/lib/utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────

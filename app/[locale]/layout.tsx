@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { PageLoader } from "@/components/ui/page-loader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -68,6 +69,7 @@ export default async function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+            <PageLoader />
             <main className="min-h-screen bg-background">{children}</main>
             <Toaster />
           </ThemeProvider>

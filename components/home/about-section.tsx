@@ -6,7 +6,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { CounterUp } from "@/components/ui/counter-up";
-import { ThreeBlob } from "@/components/three/three-blob";
+import dynamic from "next/dynamic";
+const ThreeBlob = dynamic(
+  () => import("@/components/three/three-blob").then(m => ({ default: m.ThreeBlob })),
+  { ssr: false }
+);
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -154,7 +158,7 @@ export function AboutSection({ biography, stats }: AboutSectionProps) {
             {/* Photo */}
             <div className="relative w-full max-w-full lg:max-w-xs h-80 rounded-2xl overflow-hidden border border-border/20 shadow-2xl group">
               <Image
-                src="/images/about/me.jpg"
+                src="/images/about/me.png"
                 alt="Anderson Kouadio"
                 fill
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-105"

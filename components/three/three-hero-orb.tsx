@@ -74,7 +74,9 @@ function StatueMesh() {
   );
 }
 
-useGLTF.preload("https://dvsxt5681pvqm.cloudfront.net/portfolio/models/ancient-baoule-queen-statue/source/model.glb");
+if (typeof window !== "undefined") {
+  useGLTF.preload("https://dvsxt5681pvqm.cloudfront.net/portfolio/models/ancient-baoule-queen-statue/source/model.glb");
+}
 
 interface ThreeHeroOrbProps {
   className?: string;
