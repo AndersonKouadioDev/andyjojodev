@@ -8,15 +8,14 @@ import { MainNav } from "@/components/navigation/main-nav";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { SofaSection } from "@/components/home/sofa-section";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CATEGORIES = ["Tous", "mobile", "erp", "web"] as const;
+const CATEGORIES = ["Tous", "mobile", "fullstack", "immobilier", "erp", "web"] as const;
 type Category = (typeof CATEGORIES)[number];
 
 export default function ProjectsPage() {
@@ -26,17 +25,22 @@ export default function ProjectsPage() {
   const CATEGORY_LABELS: Record<Category, string> = {
     Tous: pt("filter_all"),
     mobile: pt("filter_mobile"),
+    fullstack: "Fullstack",
+    immobilier: "Immobilier",
     erp: pt("filter_erp"),
     web: pt("filter_web"),
   };
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<Category>("Tous");
   const [hovered, setHovered] = useState<number | null>(null);
   const previewRef = useRef<HTMLDivElement>(null);
 
   const projectKeys = [
-    "project_1", "project_2", "project_3",
-    "project_4", "project_5", "project_6",
+    "project_1", "project_2", "project_3", "project_4", "project_5",
+    "project_6", "project_7", "project_8", "project_9", "project_10",
+    "project_11", "project_12", "project_13", "project_14", "project_15",
+    "project_16", "project_17",
   ] as const;
 
   const projects = projectKeys.map((key) => ({
@@ -52,7 +56,10 @@ export default function ProjectsPage() {
     github_url: t(`${key}.github_url`),
   }));
 
-  const filtered = active === "Tous" ? projects : projects.filter((p) => p.category === active);
+  // category peut être multi-valeur séparé par "|" (ex: "mobile|web|fullstack")
+  const filtered = active === "Tous"
+    ? projects
+    : projects.filter((p) => p.category.split("|").includes(active));
 
   // Initial entrance
   useGSAP(() => {
@@ -71,7 +78,7 @@ export default function ProjectsPage() {
       gsap.fromTo(
         cards,
         { y: 25, opacity: 0, scale: 0.96 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.4, stagger: 0.07, ease: "power2.out" }
+        { y: 0, opacity: 1, scale: 1, duration: 0.4, stagger: 0.06, ease: "power2.out" }
       );
     }, 10);
   };
@@ -79,7 +86,7 @@ export default function ProjectsPage() {
   // Hover preview follows cursor
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const preview = previewRef.current;
-    if (!preview) return;
+    if (!preview || hovered === null) return;
     const rect = sectionRef.current?.getBoundingClientRect();
     if (!rect) return;
     gsap.to(preview, {
@@ -90,23 +97,10 @@ export default function ProjectsPage() {
     });
   };
 
-  // First 3 projects as hotspot data
-  const hotspotProjects = projects.slice(0, 3).map((p) => ({
-    title: p.title,
-    description: p.description,
-    role: p.role,
-    tags: p.tags,
-    category: p.category,
-    anchor: "projects-grid",
-  }));
-
   return (
     <div className="min-h-screen bg-background cursor-none-desktop">
       <CustomCursor />
       <MainNav />
-
-      {/* ── Immersive sofa hero ── */}
-      <SofaSection projects={hotspotProjects} />
 
       {/* Hover preview */}
       <div
@@ -114,10 +108,17 @@ export default function ProjectsPage() {
         className="fixed pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200"
         style={{ opacity: hovered !== null ? 1 : 0 }}
       >
-        <div
-          className="placeholder-zone w-48 h-32 rounded-xl shadow-2xl"
-          data-label={hovered !== null ? projects[hovered]?.placeholder_image : ""}
-        />
+        {hovered !== null && projects[hovered] && (
+          <div className="w-52 h-34 rounded-xl overflow-hidden shadow-2xl border border-border/20">
+            <Image
+              src={`/images/projects/${projects[hovered].placeholder_image}.png`}
+              alt={projects[hovered].title}
+              width={208}
+              height={136}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
       </div>
 
       <div id="projects-grid" ref={sectionRef} className="max-w-7xl mx-auto px-6 md:px-10 pt-20 pb-24">
@@ -165,11 +166,23 @@ export default function ProjectsPage() {
               onMouseEnter={() => setHovered(projects.indexOf(project))}
               onMouseLeave={() => setHovered(null)}
             >
-              {/* Image placeholder */}
-              <div
-                className="placeholder-zone w-full h-44"
-                data-label={`Image — ${project.title}`}
-              />
+              {/* Project image */}
+              <div className="relative w-full h-44 overflow-hidden">
+                <Image
+                  src={`/images/projects/${project.placeholder_image}.png`}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+                {/* Type badge */}
+                <div className="absolute top-3 right-3">
+                  <span className="font-mono-brand text-[10px] px-2 py-0.5 rounded-full bg-background/80 backdrop-blur-sm text-primary border border-primary/20">
+                    {project.type}
+                  </span>
+                </div>
+              </div>
 
               <div className="p-6 flex flex-col gap-4">
                 {/* Meta */}
@@ -184,6 +197,7 @@ export default function ProjectsPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-1.5 rounded-lg hover:bg-foreground/8 text-muted-foreground hover:text-foreground transition-colors"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <Github size={14} />
                       </a>
@@ -194,6 +208,7 @@ export default function ProjectsPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-1.5 rounded-lg hover:bg-foreground/8 text-muted-foreground hover:text-foreground transition-colors"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <ArrowUpRight size={14} />
                       </a>

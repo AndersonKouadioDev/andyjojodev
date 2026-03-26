@@ -190,6 +190,17 @@
 }
 
 /* ─────────────────────────────────────────────
+   VIEW TRANSITION — Theme circle-expand
+───────────────────────────────────────────── */
+
+/* Disable the default cross-fade so our JS clip-path animation takes over */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* ─────────────────────────────────────────────
    TYPOGRAPHY UTILITIES
 ───────────────────────────────────────────── */
 @layer utilities {

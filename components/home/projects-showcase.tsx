@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,13 +44,13 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
     const cards = cardsContainerRef.current?.querySelectorAll(".project-card");
     if (!cards) return;
 
-    const angles = [-8, -4, 0, 4];
+    const angles = [-10, -6, -2, 2, 6, 10];
 
     // Initial fan state
     cards.forEach((card, i) => {
       gsap.set(card, {
         rotateZ: angles[i] ?? 0,
-        z: -i * 30,
+        z: -i * 20,
         transformOrigin: "bottom center",
       });
     });
@@ -90,8 +91,8 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
     });
   };
 
-  // Only show first 4 on homepage
-  const showcased = projects.slice(0, 4);
+  // Show first 6 on homepage
+  const showcased = projects.slice(0, 6);
 
   return (
     <section ref={sectionRef} className="relative py-24 md:py-36 overflow-hidden">
@@ -125,11 +126,16 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
           className="absolute pointer-events-none z-30 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200"
           style={{ opacity: activeProject !== null ? 1 : 0 }}
         >
-          {activeProject !== null && (
-            <div
-              className="placeholder-zone w-40 h-28 rounded-xl"
-              data-label={showcased[activeProject]?.placeholder_image}
-            />
+          {activeProject !== null && showcased[activeProject] && (
+            <div className="w-44 h-28 rounded-xl overflow-hidden shadow-2xl border border-border/20">
+              <Image
+                src={`/images/projects/${showcased[activeProject].placeholder_image}.png`}
+                alt={showcased[activeProject].title}
+                width={176}
+                height={112}
+                className="w-full h-full object-cover"
+              />
+            </div>
           )}
         </div>
 
@@ -147,11 +153,17 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
               onMouseLeave={() => setActiveProject(null)}
               onMouseMove={(e) => handleMouseMove(e, i)}
             >
-              {/* Image zone */}
-              <div
-                className="placeholder-zone w-full h-48"
-                data-label={`Image — ${project.title}`}
-              />
+              {/* Project image */}
+              <div className="relative w-full h-48 overflow-hidden">
+                <Image
+                  src={`/images/projects/${project.placeholder_image}.png`}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              </div>
 
               {/* Content */}
               <div className="p-6 flex flex-col gap-4">

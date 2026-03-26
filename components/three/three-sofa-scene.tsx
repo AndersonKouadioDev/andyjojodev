@@ -2,31 +2,35 @@
 
 import { useRef, useEffect, useCallback, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 
-// ─── Hotspot positions (world space, after sofa auto-fit to width 3.5) ───────
+const MODEL_URL = "http://dvsxt5681pvqm.cloudfront.net/portfolio/models/sofa/sofa.glb";
+
+// ─── 6 hotspot positions — sofa scale 6.0 ────────────────────────────────────
 export const HOTSPOT_WORLD = [
-  new THREE.Vector3(-1.05, 0.52, 0.4),  // left cushion
-  new THREE.Vector3(0.0,  0.68, 0.15),  // center back
-  new THREE.Vector3(1.0,  0.52, 0.4),   // right cushion
+  new THREE.Vector3(-1.97, 0.82, 1.10),  // coussin gauche
+  new THREE.Vector3( 0.0,  0.82, 1.10),  // coussin centre
+  new THREE.Vector3( 1.97, 0.82, 1.10),  // coussin droit
+  new THREE.Vector3(-1.54, 1.71, 0.38),  // dossier gauche
+  new THREE.Vector3( 0.0,  1.71, 0.18),  // dossier centre
+  new THREE.Vector3( 1.54, 1.71, 0.38),  // dossier droit
 ] as const;
 
 const CAMERA_ZOOMED = [
-  { pos: [-1.4, 1.0, 3.6], target: [-1.0, 0.4, 0] },
-  { pos: [0.0,  1.1, 3.6], target: [0.0,  0.4, 0] },
-  { pos: [1.4,  1.0, 3.6], target: [1.0,  0.4, 0] },
+  { pos: [-2.6, 1.0, 4.5], target: [-2.0, 0.6, 0] },
+  { pos: [ 0.0, 1.0, 4.5], target: [ 0.0, 0.6, 0] },
+  { pos: [ 2.6, 1.0, 4.5], target: [ 2.0, 0.6, 0] },
+  { pos: [-2.0, 1.9, 4.5], target: [-1.5, 1.5, 0] },
+  { pos: [ 0.0, 1.9, 4.5], target: [ 0.0, 1.5, 0] },
+  { pos: [ 2.0, 1.9, 4.5], target: [ 1.5, 1.5, 0] },
 ];
-const CAMERA_DEFAULT = { pos: [0, 0.85, 5.2], target: [0, 0.35, 0] };
+const CAMERA_DEFAULT = { pos: [0, 2.8, 5.5], target: [0, 0.8, 0] };
 
 // ─── Hotspot bubble ───────────────────────────────────────────────────────────
 function HotspotBubble({
-  position,
-  index,
-  isDark,
-  isActive,
-  onClick,
+  position, index, isDark, isActive, onClick,
 }: {
   position: THREE.Vector3;
   index: number;
@@ -40,77 +44,50 @@ function HotspotBubble({
 
   useEffect(() => {
     if (!coreRef.current || !glowRef.current) return;
-    const delay = index * 0.55;
-
-    // Breathing
+    const delay = index * 0.35;
     gsap.to(coreRef.current.scale, {
-      x: 1.35, y: 1.35, z: 1.35,
-      duration: 1.3 + index * 0.18,
-      repeat: -1, yoyo: true,
-      ease: "sine.inOut",
-      delay,
+      x: 1.3, y: 1.3, z: 1.3,
+      duration: 1.2 + index * 0.12, repeat: -1, yoyo: true,
+      ease: "sine.inOut", delay,
     });
     gsap.to(glowRef.current.scale, {
-      x: 1.6, y: 1.6, z: 1.6,
-      duration: 1.7 + index * 0.18,
-      repeat: -1, yoyo: true,
-      ease: "sine.inOut",
-      delay: delay + 0.25,
+      x: 1.5, y: 1.5, z: 1.5,
+      duration: 1.6 + index * 0.12, repeat: -1, yoyo: true,
+      ease: "sine.inOut", delay: delay + 0.2,
     });
-    // Slow ring rotation
     if (ringRef.current) {
       gsap.to(ringRef.current.rotation, {
-        z: Math.PI * 2,
-        duration: 4 + index * 0.5,
-        repeat: -1,
-        ease: "none",
+        z: Math.PI * 2, duration: 4 + index * 0.35, repeat: -1, ease: "none",
       });
     }
   }, [index]);
 
-  // Pulse on active
   useEffect(() => {
     if (!coreRef.current) return;
-    if (isActive) {
-      gsap.to(coreRef.current.scale, { x: 1.6, y: 1.6, z: 1.6, duration: 0.3, ease: "back.out(2)" });
-    } else {
-      gsap.to(coreRef.current.scale, { x: 1, y: 1, z: 1, duration: 0.3 });
-    }
+    gsap.to(coreRef.current.scale, isActive
+      ? { x: 1.5, y: 1.5, z: 1.5, duration: 0.3, ease: "back.out(2)" }
+      : { x: 1, y: 1, z: 1, duration: 0.3 }
+    );
   }, [isActive]);
 
   return (
     <group
       position={[position.x, position.y, position.z]}
       onClick={(e) => { e.stopPropagation(); onClick(index); }}
-      onPointerOver={() => document.body.style.cursor = "pointer"}
-      onPointerOut={() => document.body.style.cursor = "auto"}
+      onPointerOver={() => { document.body.style.cursor = "pointer"; }}
+      onPointerOut={() => { document.body.style.cursor = "auto"; }}
     >
-      {/* Core sphere */}
       <mesh ref={coreRef}>
-        <sphereGeometry args={[0.072, 20, 20]} />
+        <sphereGeometry args={[0.045, 16, 16]} />
         <meshBasicMaterial color="#FF4D00" transparent opacity={isActive ? 1 : 0.92} />
       </mesh>
-
-      {/* Outer glow */}
       <mesh ref={glowRef}>
-        <sphereGeometry args={[0.13, 20, 20]} />
-        <meshBasicMaterial
-          color="#FF4D00"
-          transparent
-          opacity={isDark ? 0.20 : 0.12}
-          side={THREE.BackSide}
-        />
+        <sphereGeometry args={[0.085, 16, 16]} />
+        <meshBasicMaterial color="#FF4D00" transparent opacity={isDark ? 0.18 : 0.10} side={THREE.BackSide} />
       </mesh>
-
-      {/* Orbit ring */}
       <mesh ref={ringRef} rotation={[Math.PI / 2.5, 0, 0]}>
-        <torusGeometry args={[0.14, 0.009, 8, 32]} />
-        <meshBasicMaterial color="#FF4D00" transparent opacity={0.55} />
-      </mesh>
-
-      {/* Number label (simple plane with index) */}
-      <mesh position={[0, 0.2, 0]}>
-        <planeGeometry args={[0, 0]} />
+        <torusGeometry args={[0.09, 0.007, 8, 28]} />
+        <meshBasicMaterial color="#FF4D00" transparent opacity={0.5} />
       </mesh>
     </group>
   );
@@ -119,14 +96,16 @@ function HotspotBubble({
 // ─── Sofa mesh ────────────────────────────────────────────────────────────────
 function SofaMesh({ isDark }: { isDark: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
-  const { scene } = useGLTF("https://dvsxt5681pvqm.cloudfront.net/portfolio/models/sofa/sofa.glb");
+  const { scene } = useGLTF(MODEL_URL);
 
-  // Auto-fit: center + scale to width 3.5
   useEffect(() => {
     if (!groupRef.current) return;
+    // Reset to identity before measuring so we always use raw model dimensions
+    groupRef.current.scale.setScalar(1);
+    groupRef.current.position.set(0, 0, 0);
     const box = new THREE.Box3().setFromObject(groupRef.current);
     const size = box.getSize(new THREE.Vector3());
-    const scale = 3.5 / size.x;
+    const scale = 6.0 / size.x;
     groupRef.current.scale.setScalar(scale);
 
     const scaled = new THREE.Box3().setFromObject(groupRef.current);
@@ -135,13 +114,12 @@ function SofaMesh({ isDark }: { isDark: boolean }) {
     groupRef.current.position.set(-center.x, -min.y, -center.z);
   }, [scene]);
 
-  // Theme-aware material brightness
   useEffect(() => {
     scene.traverse((child) => {
       const mesh = child as THREE.Mesh;
       if (mesh.isMesh) {
         const mat = mesh.material as THREE.MeshStandardMaterial;
-        if (mat && mat.isMeshStandardMaterial) {
+        if (mat?.isMeshStandardMaterial) {
           mat.envMapIntensity = isDark ? 0.35 : 1.4;
           mat.roughness = isDark ? mat.roughness : Math.min(mat.roughness + 0.05, 1);
           mat.needsUpdate = true;
@@ -157,37 +135,34 @@ function SofaMesh({ isDark }: { isDark: boolean }) {
   );
 }
 
-// ─── Camera controller: GSAP → ref → lerp to real camera ─────────────────────
+// ─── Camera controller ────────────────────────────────────────────────────────
 function CameraController({
-  posTarget,
-  lookTarget,
+  posTarget, lookTarget,
 }: {
   posTarget: React.MutableRefObject<THREE.Vector3>;
   lookTarget: React.MutableRefObject<THREE.Vector3>;
 }) {
   const { camera } = useThree();
   const _look = useRef(new THREE.Vector3());
-
   useFrame(() => {
     camera.position.lerp(posTarget.current, 0.06);
     _look.current.lerp(lookTarget.current, 0.06);
     camera.lookAt(_look.current);
   });
-
   return null;
 }
 
-// ─── Floor shadow catcher ─────────────────────────────────────────────────────
+// ─── Floor shadow ─────────────────────────────────────────────────────────────
 function FloorShadow({ isDark }: { isDark: boolean }) {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]} receiveShadow>
-      <planeGeometry args={[12, 12]} />
-      <shadowMaterial opacity={isDark ? 0.45 : 0.12} transparent />
+      <planeGeometry args={[14, 14]} />
+      <shadowMaterial opacity={isDark ? 0.45 : 0.10} transparent />
     </mesh>
   );
 }
 
-// ─── Fallback while model loads ───────────────────────────────────────────────
+// ─── Loading fallback ─────────────────────────────────────────────────────────
 function LoadingFallback() {
   const meshRef = useRef<THREE.Mesh>(null);
   useFrame((s) => {
@@ -201,32 +176,26 @@ function LoadingFallback() {
   );
 }
 
-// ─── Inner scene (needs useThree, must be inside Canvas) ─────────────────────
+// ─── Scene interne ────────────────────────────────────────────────────────────
 function SceneInner({
-  isDark,
-  isMobile,
-  activeHotspot,
-  onHotspotClick,
+  isDark, isMobile, activeHotspot, onHotspotClick, showHotspots,
 }: {
   isDark: boolean;
   isMobile: boolean;
   activeHotspot: number | null;
   onHotspotClick: (i: number) => void;
+  showHotspots: boolean;
 }) {
   const posTarget = useRef(new THREE.Vector3(...CAMERA_DEFAULT.pos as [number,number,number]));
   const lookTarget = useRef(new THREE.Vector3(...CAMERA_DEFAULT.target as [number,number,number]));
 
-  const handleHotspot = useCallback(
-    (index: number) => {
-      const { pos, target } = CAMERA_ZOOMED[index];
-      gsap.to(posTarget.current, { x: pos[0], y: pos[1], z: pos[2], duration: 1.4, ease: "power3.inOut" });
-      gsap.to(lookTarget.current, { x: target[0], y: target[1], z: target[2], duration: 1.4, ease: "power3.inOut" });
-      onHotspotClick(index);
-    },
-    [onHotspotClick]
-  );
+  const handleHotspot = useCallback((index: number) => {
+    const { pos, target } = CAMERA_ZOOMED[index];
+    gsap.to(posTarget.current, { x: pos[0], y: pos[1], z: pos[2], duration: 1.4, ease: "power3.inOut" });
+    gsap.to(lookTarget.current, { x: target[0], y: target[1], z: target[2], duration: 1.4, ease: "power3.inOut" });
+    onHotspotClick(index);
+  }, [onHotspotClick]);
 
-  // Reset camera when card is closed
   useEffect(() => {
     if (activeHotspot === null) {
       const { pos, target } = CAMERA_DEFAULT;
@@ -237,34 +206,32 @@ function SceneInner({
 
   return (
     <>
-      <CameraController posTarget={posTarget} lookTarget={lookTarget} />
+      {/* Camera: orbit (no zoom) in showroom mode, lerp when hotspots active */}
+      {showHotspots
+        ? <CameraController posTarget={posTarget} lookTarget={lookTarget} />
+        : <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            minPolarAngle={Math.PI / 8}
+            maxPolarAngle={Math.PI / 2.1}
+            rotateSpeed={0.55}
+            target={[0, 0.6, 0]}
+          />
+      }
 
-      {/* ── Lighting ── */}
       {isDark ? (
         <>
           <ambientLight intensity={0.12} color="#0d0812" />
-          <spotLight
-            position={[1.5, 4.5, 3.5]}
-            intensity={45}
-            color="#fff8f0"
-            angle={0.38}
-            penumbra={0.85}
-            castShadow
-            shadow-mapSize={[1024, 1024]}
-          />
+          <spotLight position={[1.5, 4.5, 3.5]} intensity={45} color="#fff8f0"
+            angle={0.38} penumbra={0.85} castShadow shadow-mapSize={[1024, 1024]} />
           <spotLight position={[-2.5, 3, 4]} intensity={18} color="#ff6a20" angle={0.5} penumbra={1} />
           <pointLight position={[0, -0.3, 2.5]} intensity={4} color="#ff4d00" />
         </>
       ) : (
         <>
           <ambientLight intensity={0.75} color="#fffaf5" />
-          <directionalLight
-            position={[3, 5, 4]}
-            intensity={2.2}
-            color="#fff5e8"
-            castShadow
-            shadow-mapSize={[1024, 1024]}
-          />
+          <directionalLight position={[3, 5, 4]} intensity={2.2} color="#fff5e8"
+            castShadow shadow-mapSize={[1024, 1024]} />
           <directionalLight position={[-3, 3, -1]} intensity={0.9} color="#e8f0ff" />
           <pointLight position={[0, 2, 5]} intensity={0.8} color="#ffffff" />
         </>
@@ -272,13 +239,11 @@ function SceneInner({
 
       <FloorShadow isDark={isDark} />
 
-      {/* ── Sofa model ── */}
       <Suspense fallback={<LoadingFallback />}>
         <SofaMesh isDark={isDark} />
       </Suspense>
 
-      {/* ── Hotspot bubbles ── */}
-      {HOTSPOT_WORLD.map((pos, i) => (
+      {showHotspots && HOTSPOT_WORLD.map((pos, i) => (
         <HotspotBubble
           key={i}
           position={pos}
@@ -292,41 +257,33 @@ function SceneInner({
   );
 }
 
-// ─── Public component ─────────────────────────────────────────────────────────
+// ─── Composant public ─────────────────────────────────────────────────────────
 interface ThreeSofaSceneProps {
   isDark: boolean;
   isMobile: boolean;
   activeHotspot: number | null;
   onHotspotClick: (i: number) => void;
+  showHotspots?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function ThreeSofaScene({
-  isDark,
-  isMobile,
-  activeHotspot,
-  onHotspotClick,
-  className,
-}: ThreeSofaSceneProps) {
-  const fov = isMobile ? 70 : 52;
-
+export function ThreeSofaScene({ isDark, isMobile, activeHotspot, onHotspotClick, showHotspots = true, className, style }: ThreeSofaSceneProps) {
+  // Showroom mode: wider FOV + much closer camera to fill the panel
+  const fov = showHotspots ? (isMobile ? 82 : 70) : 85;
+  const camPos: [number, number, number] = showHotspots ? [0, 2.8, 5.5] : [0, 1.6, 3.8];
   return (
-    <div className={className} style={{ touchAction: "none" }}>
+    <div className={className} style={{ touchAction: "none", ...style }}>
       <Canvas
-        camera={{ position: [0, 0.85, 5.2], fov }}
+        camera={{ position: camPos, fov }}
         gl={{ antialias: true, alpha: true }}
         dpr={[1, isMobile ? 1.5 : 2]}
         shadows="variance"
       >
-        <SceneInner
-          isDark={isDark}
-          isMobile={isMobile}
-          activeHotspot={activeHotspot}
-          onHotspotClick={onHotspotClick}
-        />
+        <SceneInner isDark={isDark} isMobile={isMobile} activeHotspot={activeHotspot} onHotspotClick={onHotspotClick} showHotspots={showHotspots} />
       </Canvas>
     </div>
   );
 }
 
-useGLTF.preload("https://dvsxt5681pvqm.cloudfront.net/portfolio/models/sofa/sofa.glb");
+useGLTF.preload(MODEL_URL);

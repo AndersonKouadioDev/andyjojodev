@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PerspectiveCard } from "@/components/ui/perspective-card";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
@@ -13,35 +12,43 @@ gsap.registerPlugin(ScrollTrigger);
 const CATEGORY_KEYS = ["all", "Frontend", "Backend", "Mobile", "DevOps"] as const;
 type CategoryKey = (typeof CATEGORY_KEYS)[number];
 
-const SKILLS: { name: string; category: Exclude<CategoryKey, "all">; icon: string }[] = [
+// Accent colors & index per category
+const CATEGORY_META: Record<Exclude<CategoryKey, "all">, { color: string; bg: string; index: string }> = {
+  Frontend: { color: "#60a5fa", bg: "rgba(96,165,250,0.08)",  index: "FE" },
+  Backend:  { color: "#34d399", bg: "rgba(52,211,153,0.08)",  index: "BE" },
+  Mobile:   { color: "#c084fc", bg: "rgba(192,132,252,0.08)", index: "MO" },
+  DevOps:   { color: "#fb923c", bg: "rgba(251,146,60,0.08)",  index: "DO" },
+};
+
+const SKILLS: { name: string; category: Exclude<CategoryKey, "all"> }[] = [
   // Frontend
-  { name: "Next.js", category: "Frontend", icon: "N" },
-  { name: "React", category: "Frontend", icon: "⚛" },
-  { name: "TypeScript", category: "Frontend", icon: "TS" },
-  { name: "Tailwind CSS", category: "Frontend", icon: "TW" },
-  { name: "Zustand", category: "Frontend", icon: "Z" },
-  { name: "React Query", category: "Frontend", icon: "RQ" },
-  { name: "Framer Motion", category: "Frontend", icon: "FM" },
-  { name: "Electron", category: "Frontend", icon: "E" },
+  { name: "Next.js",       category: "Frontend" },
+  { name: "React",         category: "Frontend" },
+  { name: "TypeScript",    category: "Frontend" },
+  { name: "Tailwind CSS",  category: "Frontend" },
+  { name: "Zustand",       category: "Frontend" },
+  { name: "React Query",   category: "Frontend" },
+  { name: "Framer Motion", category: "Frontend" },
+  { name: "Electron",      category: "Frontend" },
   // Backend
-  { name: "NestJS", category: "Backend", icon: "N" },
-  { name: "Spring Boot", category: "Backend", icon: "SB" },
-  { name: "Laravel", category: "Backend", icon: "L" },
-  { name: "Django", category: "Backend", icon: "D" },
-  { name: "Node.js", category: "Backend", icon: "⬡" },
-  { name: "PostgreSQL", category: "Backend", icon: "PG" },
-  { name: "Redis", category: "Backend", icon: "R" },
-  { name: "GraphQL", category: "Backend", icon: "G" },
+  { name: "NestJS",        category: "Backend" },
+  { name: "Spring Boot",   category: "Backend" },
+  { name: "Laravel",       category: "Backend" },
+  { name: "Django",        category: "Backend" },
+  { name: "Node.js",       category: "Backend" },
+  { name: "PostgreSQL",    category: "Backend" },
+  { name: "Redis",         category: "Backend" },
+  { name: "GraphQL",       category: "Backend" },
   // Mobile
-  { name: "React Native", category: "Mobile", icon: "RN" },
-  { name: "Flutter", category: "Mobile", icon: "FL" },
-  { name: "Expo", category: "Mobile", icon: "EX" },
+  { name: "React Native",  category: "Mobile" },
+  { name: "Flutter",       category: "Mobile" },
+  { name: "Expo",          category: "Mobile" },
   // DevOps
-  { name: "Docker", category: "DevOps", icon: "🐳" },
-  { name: "Kubernetes", category: "DevOps", icon: "K8S" },
-  { name: "GitHub Actions", category: "DevOps", icon: "GH" },
-  { name: "Kafka", category: "DevOps", icon: "KF" },
-  { name: "CI/CD", category: "DevOps", icon: "⚙" },
+  { name: "Docker",          category: "DevOps" },
+  { name: "Kubernetes",      category: "DevOps" },
+  { name: "GitHub Actions",  category: "DevOps" },
+  { name: "Kafka",           category: "DevOps" },
+  { name: "CI/CD",           category: "DevOps" },
 ];
 
 export function StackSection() {
@@ -121,28 +128,41 @@ export function StackSection() {
           ref={gridRef}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3"
         >
-          {filtered.map((skill) => (
-            <PerspectiveCard
-              key={skill.name}
-              className="skill-card glass rounded-2xl p-4 border border-border/25 hover:border-primary/30 cursor-default group"
-              intensity={10}
-            >
-              <div className="flex flex-col items-center gap-3 py-2">
+          {filtered.map((skill) => {
+            const meta = CATEGORY_META[skill.category];
+            return (
+              <div
+                key={skill.name}
+                className="skill-card relative glass rounded-2xl overflow-hidden border border-border/20 hover:border-transparent cursor-default group transition-all duration-300 hover:-translate-y-0.5"
+                style={{ "--accent": meta.color } as React.CSSProperties}
+              >
+                {/* Top accent line */}
                 <div
-                  className={cn(
-                    "w-10 h-10 rounded-xl flex items-center justify-center",
-                    "bg-white/5 group-hover:bg-primary/10 transition-colors duration-200",
-                    "text-sm font-mono-brand font-bold text-muted-foreground group-hover:text-primary"
-                  )}
+                  className="absolute top-0 left-0 right-0 h-[2px] opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: meta.color }}
+                />
+
+                {/* Card body */}
+                <div
+                  className="flex flex-col items-start gap-3 p-4 pt-5"
+                  style={{ background: `linear-gradient(135deg, ${meta.bg} 0%, transparent 60%)` }}
                 >
-                  {skill.icon}
+                  {/* Category badge */}
+                  <span
+                    className="font-mono-brand text-[9px] tracking-widest uppercase px-1.5 py-0.5 rounded-md font-bold"
+                    style={{ color: meta.color, background: meta.bg }}
+                  >
+                    {meta.index}
+                  </span>
+
+                  {/* Skill name */}
+                  <span className="font-display text-[13px] font-semibold text-foreground/70 group-hover:text-foreground transition-colors duration-200 leading-tight">
+                    {skill.name}
+                  </span>
                 </div>
-                <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-200 text-center leading-tight">
-                  {skill.name}
-                </span>
               </div>
-            </PerspectiveCard>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

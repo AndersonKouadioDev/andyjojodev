@@ -60,75 +60,207 @@
   },
   "projects": {
     "project_1": {
-      "title": "Turbo-Delivery",
-      "description": "Complete multi-actor delivery platform: 4 interconnected applications (Admin ERP, Client App, Delivery App, Partner App). Microservices backend with real-time tracking and geolocation.",
+      "title": "Turbo Delivery",
+      "description": "Complete delivery ecosystem: showcase website, partner backoffice, admin ERP and mobile apps (consumers & delivery drivers). Microservices architecture with real-time tracking and geolocation.",
       "sector": "Food & Delivery",
-      "type": "Web + Mobile",
+      "type": "Web + Mobile + ERP",
       "role": "Tech Lead — Architecture & Development",
       "tags": "Spring Boot|NestJS|Next.js|Flutter|WebSocket|Docker|Google Maps",
-      "category": "mobile",
-      "placeholder_image": "turbo-delivery",
-      "live_url": "",
+      "category": "mobile|web|fullstack",
+      "placeholder_image": "turbo_delivery_website",
+      "live_url": "https://www.turbodeliveryapp.com/",
       "github_url": "https://github.com/AndersonKouadioDev"
     },
     "project_2": {
-      "title": "Chicken-Nation",
-      "description": "Restaurant platform with online ordering and real-time tracking. Includes a management backoffice, a client mobile app and a website.",
-      "sector": "Restaurant",
+      "title": "Chicken Nation",
+      "description": "Complete fast food platform: website, mobile client app, order management backoffice and real-time delivery tracking.",
+      "sector": "Food & Restaurant",
       "type": "Web + Mobile",
       "role": "Tech Lead — Architecture & Development",
       "tags": "NestJS|Next.js|React Native|WebSocket|Google Maps",
-      "category": "mobile",
-      "placeholder_image": "chicken-nation",
-      "live_url": "",
+      "category": "mobile|web",
+      "placeholder_image": "chicken_nation_website",
+      "live_url": "https://chicken-nation.com/",
       "github_url": "https://github.com/AndersonKouadioDev"
     },
     "project_3": {
-      "title": "ERP Africa Booking",
-      "description": "Real estate management software with client portal and mobile app. Complete portfolio management, reservations and maintenance.",
+      "title": "Africa Booking",
+      "description": "Airbnb-style real estate portal with integrated property management tool for Innov Immobilier. Online booking, portfolio management and property tracking.",
       "sector": "Real Estate",
       "type": "Web + Mobile",
       "role": "Fullstack Developer",
       "tags": "Laravel|Next.js|Flutter|PostgreSQL|REST API",
-      "category": "erp",
-      "placeholder_image": "erp-africa-booking",
-      "live_url": "",
+      "category": "immobilier",
+      "placeholder_image": "africa_booking_desktop_short",
+      "live_url": "https://africabooking.app/",
       "github_url": "https://github.com/AndersonKouadioDev"
     },
     "project_4": {
-      "title": "POS Ciss St Moïse",
-      "description": "Complete point-of-sale system with cash management, real-time inventory and sales reports. Optimized interface for fast cashier use.",
-      "sector": "Commerce",
+      "title": "Lunion Booking",
+      "description": "Dual-purpose real estate portal for Lunion Lab: public booking platform and integrated property management tool for professionals.",
+      "sector": "Real Estate",
+      "type": "Web",
+      "role": "Fullstack Developer",
+      "tags": "NestJS|Next.js|PostgreSQL|REST API|Tailwind CSS",
+      "category": "immobilier",
+      "placeholder_image": "lunion_booking_website",
+      "live_url": "https://www.lunion-booking.com/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_5": {
+      "title": "Twins Immo — ERP",
+      "description": "Complete business ERP for Twins Immo real estate management, client of Merradis Group. Property, tenant, contract and accounting management.",
+      "sector": "Real Estate",
+      "type": "Web",
+      "role": "Fullstack Developer",
+      "tags": "Next.js|NestJS|PostgreSQL|Tailwind CSS|REST API",
+      "category": "erp",
+      "placeholder_image": "twins_immobilier_website",
+      "live_url": "https://twins-immobilier.com/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_6": {
+      "title": "Luxury Home Abidjan",
+      "description": "High-end real estate website with management backoffice and integrated CRM for a Lunion Lab client. Luxury property catalog, lead management and client tracking.",
+      "sector": "Real Estate",
+      "type": "Web",
+      "role": "Fullstack Developer (Freelance)",
+      "tags": "Next.js|NestJS|Tailwind CSS|PostgreSQL|CRM",
+      "category": "immobilier",
+      "placeholder_image": "luxury_home_website",
+      "live_url": "https://luxuryhomeabidjan.com/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_7": {
+      "title": "Chad Embassy",
+      "description": "Official website of the Embassy of Chad in Côte d'Ivoire with content management backoffice for news and consular services.",
+      "sector": "Diplomatic & Institutional",
+      "type": "Web",
+      "role": "Fullstack Developer (Freelance)",
+      "tags": "Next.js|NestJS|Tailwind CSS|PostgreSQL",
+      "category": "web",
+      "placeholder_image": "ambassade_tchad_website",
+      "live_url": "https://www.ambatchad.ci/fr",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_8": {
+      "title": "Tropic 105 — POS",
+      "description": "Point of Sale (POS) system for Ciss St Moïse. Optimized cashier interface, real-time inventory management and detailed sales reports.",
+      "sector": "Commerce & Distribution",
       "type": "Web",
       "role": "Fullstack Developer (Freelance)",
       "tags": "Django|React.js|PostgreSQL|REST API",
       "category": "erp",
-      "placeholder_image": "pos-ciss",
+      "placeholder_image": "ciss_st_moise_website",
       "live_url": "",
       "github_url": "https://github.com/AndersonKouadioDev"
     },
-    "project_5": {
-      "title": "ERP Tropic105",
-      "description": "Complete ERP system for business management. Modular architecture with secure navigation and custom design system.",
-      "sector": "Enterprise",
-      "type": "Web",
-      "role": "Fullstack Developer (Freelance)",
-      "tags": "Django|React.js|Zustand|Figma|REST API",
-      "category": "erp",
-      "placeholder_image": "tropic105",
-      "live_url": "",
-      "github_url": "https://github.com/AndersonKouadioDev"
-    },
-    "project_6": {
-      "title": "ERP Immobilier INNOV",
-      "description": "Modular business ERP for real estate management. Includes reservation management, IT maintenance and advanced reporting.",
+    "project_9": {
+      "title": "Innov Immobilier",
+      "description": "Corporate website for Innov Immobilier real estate agency. Service presentation, property catalog and online contact form.",
       "sector": "Real Estate",
       "type": "Web",
       "role": "Fullstack Developer (Fixed-term)",
-      "tags": "Laravel|React|Tailwind CSS|PostgreSQL|CI/CD",
-      "category": "erp",
-      "placeholder_image": "erp-innov",
-      "live_url": "",
+      "tags": "Next.js|Tailwind CSS|Laravel|REST API",
+      "category": "web",
+      "placeholder_image": "innov_immobilier_website",
+      "live_url": "https://www.innov-immobilier.com/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_10": {
+      "title": "Innov Plaza",
+      "description": "Real estate portal for Innov Immobilier. Property search and browsing with advanced filters and contact system.",
+      "sector": "Real Estate",
+      "type": "Web",
+      "role": "Fullstack Developer (Fixed-term)",
+      "tags": "Next.js|Tailwind CSS|Laravel|PostgreSQL",
+      "category": "immobilier",
+      "placeholder_image": "inno_plaza_website",
+      "live_url": "https://www.inno-plaza.com/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_11": {
+      "title": "Aitech Groupe",
+      "description": "Corporate website for Aitech Groupe IT company. Presentation of services, expertise and technological solutions.",
+      "sector": "IT & Technology",
+      "type": "Web",
+      "role": "Fullstack Developer (Freelance)",
+      "tags": "Next.js|Tailwind CSS|Framer Motion",
+      "category": "web",
+      "placeholder_image": "aitch_group_website",
+      "live_url": "https://www.aitech-ci.com/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_12": {
+      "title": "Agence Mirna",
+      "description": "Website for Agence Mirna real estate agency in Abidjan. Property listings, agency services and contact form.",
+      "sector": "Real Estate",
+      "type": "Web",
+      "role": "Frontend Developer (Freelance)",
+      "tags": "Next.js|Tailwind CSS|REST API",
+      "category": "web",
+      "placeholder_image": "agence_mirna_website",
+      "live_url": "https://www.agencemirna.com/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_13": {
+      "title": "Oprah Squadra",
+      "description": "Official website for rapper and singer Oprah Squadra. Discography, news, visuals and concert dates.",
+      "sector": "Music & Culture",
+      "type": "Web",
+      "role": "Frontend Developer (Freelance)",
+      "tags": "Next.js|Tailwind CSS|GSAP|Framer Motion",
+      "category": "web",
+      "placeholder_image": "oprah_squadra_website",
+      "live_url": "https://www.oprah-squadra.com/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_14": {
+      "title": "Miss Athlete",
+      "description": "Website for the Miss Athlete competition. Contestant presentations, event schedule and online voting.",
+      "sector": "Sports & Events",
+      "type": "Web",
+      "role": "Frontend Developer (Freelance)",
+      "tags": "Next.js|Tailwind CSS",
+      "category": "web",
+      "placeholder_image": "miss_athlete_website",
+      "live_url": "https://missathlete.vercel.app/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_15": {
+      "title": "Novis Co-working",
+      "description": "Website for a modern co-working space. Subscription offers, available spaces presentation and online booking.",
+      "sector": "Office & Co-working",
+      "type": "Web",
+      "role": "Frontend Developer (Freelance)",
+      "tags": "Next.js|Tailwind CSS|GSAP",
+      "category": "web",
+      "placeholder_image": "novis_cooworking_website",
+      "live_url": "https://novis-co-working.vercel.app/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_16": {
+      "title": "Donate — Ciss St Moïse",
+      "description": "Online donation platform for Ciss St Moïse. Simple and secure interface allowing users to make donations in just a few clicks.",
+      "sector": "Philanthropy",
+      "type": "Web",
+      "role": "Fullstack Developer (Freelance)",
+      "tags": "Next.js|Tailwind CSS|Stripe|REST API",
+      "category": "web",
+      "placeholder_image": "donate_website",
+      "live_url": "https://cissstmoise.com/",
+      "github_url": "https://github.com/AndersonKouadioDev"
+    },
+    "project_17": {
+      "title": "Moder App",
+      "description": "Personal web application showcasing modern UI/UX techniques: smooth animations, consistent design system and optimized performance.",
+      "sector": "Personal & Demo",
+      "type": "Web",
+      "role": "Frontend Developer (Personal)",
+      "tags": "Next.js|Tailwind CSS|GSAP|Framer Motion|TypeScript",
+      "category": "web",
+      "placeholder_image": "moder_app_website",
+      "live_url": "https://modern-app-ui.vercel.app/",
       "github_url": "https://github.com/AndersonKouadioDev"
     }
   },
@@ -219,8 +351,14 @@
     "skill_8": "Autonomy"
   },
   "language": {
-    "french": { "title": "French", "level": "Fluent" },
-    "english": { "title": "English", "level": "Bilingual" }
+    "french": {
+      "title": "French",
+      "level": "Fluent"
+    },
+    "english": {
+      "title": "English",
+      "level": "Bilingual"
+    }
   },
   "interests": "Tech entrepreneurship • IT volunteering • Fullstack training (Next.js and NestJS) • Technical content creation • Design • Sports • Reading",
   "hero_section": {
@@ -275,13 +413,21 @@
     "radar_title": "Overview",
     "soft_title": "Soft Skills"
   },
+  "sofa_section": {
+    "eyebrow": "What I build",
+    "title_1": "Have a seat,",
+    "title_2": "let's talk project.",
+    "hint": "Click on a bubble to discover a service",
+    "scroll": "Explore more",
+    "cta_contact": "Contact me"
+  },
   "projects_page": {
     "eyebrow": "Portfolio",
     "title_1": "All",
     "title_2": "projects",
     "subtitle": "Web, mobile and ERP software applications designed and delivered end to end.",
     "filter_all": "All",
-    "filter_mobile": "Web + Mobile",
+    "filter_mobile": "Mobile Apps",
     "filter_erp": "ERP / Software",
     "filter_web": "Web",
     "sofa_eyebrow": "My projects",
@@ -289,7 +435,9 @@
     "sofa_title_2": "Let's talk project.",
     "sofa_hint": "Click on a bubble to discover a project",
     "sofa_cta": "View details",
-    "sofa_scroll": "Explore all projects"
+    "sofa_scroll": "Explore all projects",
+    "filter_fullstack": "Web + Mobile + ERP",
+    "filter_immobilier": "Real Estate"
   },
   "contact_page": {
     "eyebrow": "Contact",

@@ -3,159 +3,239 @@
 import { useRef, useEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Link, usePathname } from "@/i18n/navigation";
 import { ThemeToggle } from "../theme-toggle";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
 import LanguageSwitcher from "../language-switcher";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function MainNav() {
-  const navRef = useRef<HTMLElement>(null);
-  const pathname = usePathname();
-  const navigationT = useTranslations("navigation");
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const t = useTranslations("navigation");
 
   const routes = [
-    { label: navigationT("home"), href: "/" },
-    { label: navigationT("projects"), href: "/projects" },
-    { label: navigationT("skills"), href: "/skills" },
-    { label: navigationT("contact"), href: "/contact" },
+    { label: t("home"),     href: "/",         sub: "— Présentation" },
+    { label: t("projects"), href: "/projects",  sub: "— 17 réalisations" },
+    { label: t("skills"),   href: "/skills",    sub: "— Stack tech" },
+    { label: t("contact"),  href: "/contact",   sub: "— Disponible" },
   ];
 
-  // Entrance animation
-  useGSAP(() => {
-    const nav = navRef.current;
-    if (!nav) return;
-    gsap.fromTo(
-      nav,
-      { y: -80, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.3 }
-    );
-  }, []);
-
-  // Glassmorphism intensifies on scroll
+  // Scroll detection
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  // Nav entrance
+  useGSAP(() => {
+    gsap.fromTo(
+      navRef.current,
+      { y: -80, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.3 }
+    );
+  }, []);
+
+  // Open / close menu animation
+  useGSAP(() => {
+    const overlay = overlayRef.current;
+    const footer  = footerRef.current;
+    if (!overlay || !linksRef.current || !visible) return;
+
+    const items = linksRef.current.querySelectorAll<HTMLElement>(".nav-item");
+
+    if (open) {
+      gsap.timeline()
+        .fromTo(overlay,
+          { clipPath: "inset(0% 0% 100% 0%)" },
+          { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power4.inOut" }
+        )
+        .fromTo(items,
+          { yPercent: 110, opacity: 0 },
+          { yPercent: 0, opacity: 1, stagger: 0.08, duration: 0.7, ease: "power3.out" },
+          "-=0.35"
+        )
+        .fromTo(footer,
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+          "-=0.45"
+        );
+    } else {
+      gsap.timeline({ onComplete: () => setVisible(false) })
+        .to(items, {
+          yPercent: -40,
+          opacity: 0,
+          stagger: 0.04,
+          duration: 0.35,
+          ease: "power2.in",
+        })
+        .to(footer, { y: -16, opacity: 0, duration: 0.25, ease: "power2.in" }, 0)
+        .to(overlay, {
+          clipPath: "inset(0% 0% 100% 0%)",
+          duration: 0.55,
+          ease: "power4.inOut",
+        }, "-=0.15");
+    }
+  }, { dependencies: [open, visible] });
+
   return (
-    <nav
-      ref={navRef}
-      className={cn(
-        // Centrage Tailwind v4 : inset-x-0 + mx-auto
-        "fixed top-4 inset-x-0 mx-auto z-50 print:hidden",
-        "w-[calc(100%-2rem)] max-w-5xl",
-        "flex items-center justify-between gap-4",
-        "px-5 py-3 rounded-2xl",
-        "backdrop-blur-xl transition-all duration-500",
-        scrolled
-          ? "bg-background/85 shadow-lg shadow-black/10 border border-border/60"
-          : "bg-background/60 border border-border/30"
-      )}
-    >
-      {/* ── Logo ── */}
-      <Link href="/" className="flex items-center shrink-0 group">
-        <span className="font-display text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-200">
-          AK<span className="text-primary">.</span>
-        </span>
-      </Link>
+    <>
+      {/* ── Fixed nav bar ── */}
+      <nav
+        ref={navRef}
+        className={cn(
+          "fixed top-4 inset-x-0 mx-auto z-[60] print:hidden",
+          "w-[calc(100%-2rem)] max-w-5xl",
+          "flex items-center justify-between",
+          "px-5 py-3 rounded-2xl",
+          "transition-all duration-500",
+          open
+            ? "bg-transparent border-transparent shadow-none backdrop-blur-none"
+            : scrolled
+              ? "backdrop-blur-xl bg-background/85 shadow-lg shadow-black/10 border border-border/60"
+              : "backdrop-blur-xl bg-background/60 border border-border/30"
+        )}
+      >
+        {/* Logo */}
+        <Link
+          href="/"
+          className="flex items-center shrink-0 group"
+          onClick={() => { setOpen(false); setVisible(false); }}
+        >
+          <span className="font-display text-xl font-bold tracking-tight transition-colors duration-300 text-foreground group-hover:text-primary">
+            AK<span className="text-primary">.</span>
+          </span>
+        </Link>
 
-      {/* ── Desktop links ── */}
-      <div className="hidden md:flex items-center gap-0.5">
-        {routes.map((route) => {
-          const isActive = pathname === route.href;
-          return (
-            <Link
-              key={route.href}
-              href={route.href}
-              className={cn(
-                "relative px-4 py-1.5 text-sm font-medium rounded-xl",
-                "transition-all duration-200",
-                isActive
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
-              )}
-            >
-              {isActive && (
-                <span className="absolute inset-0 rounded-xl bg-foreground/8 border border-border/40 pointer-events-none" />
-              )}
-              <span className="relative">{route.label}</span>
-            </Link>
-          );
-        })}
-      </div>
+        {/* Center: Open to work badge — desktop only, hidden when menu open */}
+        <div className={cn(
+          "hidden md:flex items-center gap-2 transition-opacity duration-300",
+          open && "opacity-0 pointer-events-none"
+        )}>
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/8 text-xs font-mono-brand text-green-400 whitespace-nowrap">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
+            Open to work
+          </span>
+        </div>
 
-      {/* ── Right controls ── */}
-      <div className="hidden md:flex items-center gap-2 shrink-0">
-        {/* Open to work */}
-        <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/8 text-xs font-mono-brand text-green-400 whitespace-nowrap">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-          Open to work
-        </span>
-        <div className="w-px h-4 bg-white/10" />
-        <LanguageSwitcher />
-        <ThemeToggle />
-      </div>
+        {/* Right: ThemeToggle + MENU button */}
+        <div className="flex items-center gap-3">
+          <div className={cn(
+            "transition-opacity duration-300",
+            open && "opacity-0 pointer-events-none"
+          )}>
+            <ThemeToggle />
+          </div>
 
-      {/* ── Mobile menu ── */}
-      <div className="md:hidden flex items-center gap-2">
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-foreground hover:bg-foreground/5 h-9 w-9"
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="bg-background border-l border-border/40 w-72 p-6">
-            <SheetHeader className="sr-only">
-              <SheetTitle>Menu</SheetTitle>
-            </SheetHeader>
-            <div className="flex flex-col gap-2 mt-6">
-              {/* Badge */}
-              <span className="flex items-center gap-2 px-3 py-2 rounded-xl border border-green-500/30 bg-green-500/8 text-xs font-mono-brand text-green-400 mb-3 w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                Open to work
-              </span>
+          {/* MENU / CLOSE button */}
+          <button
+            onClick={() => {
+              if (!open) {
+                setVisible(true);
+                setOpen(true);
+              } else {
+                setOpen(false);
+              }
+            }}
+            className={cn(
+              "font-mono-brand text-[11px] tracking-[0.25em] px-4 py-2 rounded transition-all duration-200 cursor-pointer",
+              "border border-border/50 text-foreground hover:border-primary/60 hover:text-primary"
+            )}
+          >
+            {open ? "CLOSE" : "MENU"}
+          </button>
+        </div>
+      </nav>
 
-              {routes.map((route) => {
-                const isActive = pathname === route.href;
-                return (
+      {/* ── Fullscreen overlay ── */}
+      <div
+        ref={overlayRef}
+        className={cn(
+          "fixed inset-0 z-[55] flex-col bg-background",
+          visible ? "flex" : "hidden"
+        )}
+        style={{ clipPath: "inset(0% 0% 100% 0%)" }}
+      >
+        {/* Ambient glow */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120vw] h-[50vh]"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,77,0,0.06) 0%, transparent 70%)",
+            }}
+          />
+        </div>
+
+        {/* ── Navigation links ── */}
+        <div
+          ref={linksRef}
+          className="flex-1 flex flex-col justify-center px-8 md:px-14 lg:px-20 gap-1 md:gap-0 overflow-hidden"
+        >
+          {routes.map((route) => {
+            const isActive = pathname === route.href;
+            return (
+              <div
+                key={route.href}
+                className="nav-item py-1 border-b border-border/30 last:border-b-0 group"
+              >
+                {/* Inner mask — clips vertical slide animation only */}
+                <div className="flex items-baseline justify-between overflow-hidden">
                   <Link
-                    key={route.href}
                     href={route.href}
-                    onClick={() => setOpen(false)}
+                    onClick={() => { setOpen(false); setVisible(false); }}
                     className={cn(
-                      "px-4 py-3 rounded-xl text-sm font-medium transition-colors",
+                      "font-display font-black uppercase leading-none tracking-tight block",
+                      "text-[13vw] md:text-[9.5vw] lg:text-[8vw]",
+                      "transition-colors duration-200",
                       isActive
-                        ? "text-foreground bg-foreground/8 border border-border/40"
-                        : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
+                        ? "text-primary"
+                        : "text-foreground/85 group-hover:text-primary"
                     )}
                   >
                     {route.label}
                   </Link>
-                );
-              })}
 
-              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border/30 px-2">
-                <LanguageSwitcher />
-                <ThemeToggle />
+                  <span className="font-mono-brand text-xs md:text-sm text-foreground/25 group-hover:text-foreground/50 transition-colors duration-200 hidden md:block shrink-0 ml-6">
+                    {route.sub}
+                  </span>
+                </div>
               </div>
-            </div>
-          </SheetContent>
-        </Sheet>
+            );
+          })}
+        </div>
+
+        {/* ── Footer ── */}
+        <div
+          ref={footerRef}
+          className="flex items-center justify-between px-8 md:px-14 lg:px-20 py-6 md:py-8 border-t border-border/30"
+        >
+          {/* Open to work */}
+          <span className="flex items-center gap-2 text-xs font-mono-brand text-green-500">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            Open to work
+          </span>
+
+          {/* Controls */}
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher variant="overlay" />
+            <ThemeToggle />
+          </div>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }

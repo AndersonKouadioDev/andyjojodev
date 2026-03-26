@@ -5,7 +5,7 @@ import { AboutSection } from "@/components/home/about-section";
 import { ExperienceSection } from "@/components/home/experience-section";
 import { StackSection } from "@/components/home/stack-section";
 import { ProjectsShowcase } from "@/components/home/projects-showcase";
-import { ServicesSection } from "@/components/home/services-section";
+import { SofaSection, HotspotService } from "@/components/home/sofa-section";
 import { ContactCtaSection } from "@/components/home/contact-cta-section";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { getTranslations } from "next-intl/server";
@@ -29,21 +29,28 @@ export default async function Home() {
 
   // Stats
   const stats = [
-    { value: 4, suffix: "+", label: statsT("years_label") },
+    { value: 5, suffix: "+", label: statsT("years_label") },
     { value: 10, suffix: "+", label: statsT("projects_label") },
     { value: 10, suffix: "", label: statsT("devs_label") },
     { value: 3, suffix: "", label: statsT("sectors_label") },
   ];
 
-  // Services
+  // Services → 6 hotspots sofa
   const serviceKeys = ["service_1", "service_2", "service_3", "service_4", "service_5", "service_6"] as const;
-  const services = serviceKeys.map((key) => ({
+  const serviceCategories = ["web", "mobile", "backend", "lead", "design", "devops"];
+  const sofaServices: HotspotService[] = serviceKeys.map((key, i) => ({
     title: servicesT(`${key}.title`),
     description: servicesT(`${key}.description`),
+    category: serviceCategories[i],
   }));
 
   // Projects
-  const projectKeys = ["project_1", "project_2", "project_3", "project_4", "project_5", "project_6"] as const;
+  const projectKeys = [
+    "project_1", "project_2", "project_3", "project_4", "project_5",
+    "project_6", "project_7", "project_8", "project_9", "project_10",
+    "project_11", "project_12", "project_13", "project_14", "project_15",
+    "project_16", "project_17",
+  ] as const;
   const projects = projectKeys.map((key) => ({
     title: projectsT(`${key}.title`),
     description: projectsT(`${key}.description`),
@@ -86,8 +93,8 @@ export default async function Home() {
       {/* 6 — Projects showcase */}
       <ProjectsShowcase projects={projects} />
 
-      {/* 7 — Services */}
-      <ServicesSection services={services} />
+      {/* 7 — Sofa immersif (services) */}
+      <SofaSection services={sofaServices} />
 
       {/* 8 — Contact CTA */}
       <ContactCtaSection

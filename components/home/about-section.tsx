@@ -8,6 +8,7 @@ import { SplitText } from "gsap/SplitText";
 import { CounterUp } from "@/components/ui/counter-up";
 import { ThreeBlob } from "@/components/three/three-blob";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -150,11 +151,21 @@ export function AboutSection({ biography, stats }: AboutSectionProps) {
               {biography}
             </p>
 
-            {/* Photo placeholder */}
-            <div
-              className="placeholder-zone w-full h-48"
-              data-label={t("photo_label")}
-            />
+            {/* Photo */}
+            <div className="relative w-full max-w-full lg:max-w-xs h-80 rounded-2xl overflow-hidden border border-border/20 shadow-2xl group">
+              <Image
+                src="/images/about/me.jpg"
+                alt="Anderson Kouadio"
+                fill
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 320px"
+                priority
+              />
+              {/* Subtle gradient overlay bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+              {/* Accent border glow */}
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-primary/10 group-hover:ring-primary/30 transition-all duration-500" />
+            </div>
           </div>
 
           {/* Right — Stats */}

@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTheme } from "next-themes";
 import { ArrowRight, MapPin, Github, Linkedin } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { MagneticButton } from "@/components/ui/magnetic-button";
@@ -25,6 +26,8 @@ interface HeroSectionProps {
 
 export function HeroSection({ name, title, location, github, linkedin }: HeroSectionProps) {
   const heroT = useTranslations("hero_section");
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   const sectionRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLHeadingElement>(null);
@@ -32,6 +35,9 @@ export function HeroSection({ name, title, location, github, linkedin }: HeroSec
   const metaRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const orbRef = useRef<HTMLDivElement>(null);
+  const fog1Ref = useRef<HTMLDivElement>(null);
+  const fog2Ref = useRef<HTMLDivElement>(null);
+  const fog3Ref = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const tl = gsap.timeline({ delay: 0.5 });
@@ -94,13 +100,42 @@ export function HeroSection({ name, title, location, github, linkedin }: HeroSec
       "-=0.2"
     );
 
-    // Orb fade in
+    // Orb — simple fade in, no scale
     tl.fromTo(
       orbRef.current,
-      { scale: 0.6, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1, ease: "power2.out" },
+      { opacity: 0 },
+      { opacity: 1, duration: 1.2, ease: "power2.out" },
       "-=0.8"
     );
+
+    // Fog layers — slow drifting clouds
+    if (fog1Ref.current && fog2Ref.current && fog3Ref.current) {
+      gsap.set([fog1Ref.current, fog2Ref.current, fog3Ref.current], { opacity: 0 });
+
+      // Fog 1: slides from left, slow
+      gsap.timeline({ delay: 1.2, repeat: -1, yoyo: false })
+        .to(fog1Ref.current, { opacity: 0.55, duration: 3, ease: "sine.inOut" })
+        .to(fog1Ref.current, { x: "18%", duration: 18, ease: "none" }, 0)
+        .to(fog1Ref.current, { opacity: 0, duration: 3, ease: "sine.inOut" }, 15)
+        .set(fog1Ref.current, { x: "-10%" })
+        .to(fog1Ref.current, { opacity: 0, duration: 0.01 });
+
+      // Fog 2: slides from right, offset timing
+      gsap.timeline({ delay: 5, repeat: -1, yoyo: false })
+        .to(fog2Ref.current, { opacity: 0.40, duration: 4, ease: "sine.inOut" })
+        .to(fog2Ref.current, { x: "-14%", duration: 22, ease: "none" }, 0)
+        .to(fog2Ref.current, { opacity: 0, duration: 4, ease: "sine.inOut" }, 18)
+        .set(fog2Ref.current, { x: "8%" })
+        .to(fog2Ref.current, { opacity: 0, duration: 0.01 });
+
+      // Fog 3: subtle bottom drift
+      gsap.timeline({ delay: 9, repeat: -1, yoyo: false })
+        .to(fog3Ref.current, { opacity: 0.30, duration: 4, ease: "sine.inOut" })
+        .to(fog3Ref.current, { x: "10%", y: "-5%", duration: 20, ease: "none" }, 0)
+        .to(fog3Ref.current, { opacity: 0, duration: 4, ease: "sine.inOut" }, 16)
+        .set(fog3Ref.current, { x: "-5%", y: "0%" })
+        .to(fog3Ref.current, { opacity: 0, duration: 0.01 });
+    }
   }, []);
 
   return (
@@ -238,6 +273,39 @@ export function HeroSection({ name, title, location, github, linkedin }: HeroSec
           </div>
         </div>
       </div>
+
+      {/* ── Fog layers — pointer-events-none ── */}
+      <div
+        ref={fog1Ref}
+        className="absolute inset-0 pointer-events-none z-[1] opacity-0"
+        style={{
+          background: isDark
+            ? "radial-gradient(ellipse 80% 40% at 20% 55%, rgba(255,255,255,0.03) 0%, rgba(180,130,100,0.04) 40%, transparent 75%)"
+            : "radial-gradient(ellipse 80% 40% at 20% 55%, rgba(255,255,255,0.55) 0%, rgba(240,220,200,0.30) 40%, transparent 75%)",
+          filter: "blur(32px)",
+        }}
+      />
+      <div
+        ref={fog2Ref}
+        className="absolute inset-0 pointer-events-none z-[1] opacity-0"
+        style={{
+          background: isDark
+            ? "radial-gradient(ellipse 70% 50% at 80% 40%, rgba(255,255,255,0.025) 0%, rgba(150,120,90,0.035) 40%, transparent 70%)"
+            : "radial-gradient(ellipse 70% 50% at 80% 40%, rgba(255,255,255,0.50) 0%, rgba(230,210,195,0.28) 40%, transparent 70%)",
+          filter: "blur(48px)",
+        }}
+      />
+      <div
+        ref={fog3Ref}
+        className="absolute pointer-events-none z-[1] opacity-0"
+        style={{
+          bottom: 0, left: "-5%", right: "-5%", height: "45%",
+          background: isDark
+            ? "linear-gradient(to top, rgba(255,255,255,0.02) 0%, transparent 100%)"
+            : "linear-gradient(to top, rgba(255,255,255,0.45) 0%, transparent 100%)",
+          filter: "blur(28px)",
+        }}
+      />
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-muted-foreground/50">
