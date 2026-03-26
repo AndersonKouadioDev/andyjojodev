@@ -91,6 +91,7 @@ export function ContactCtaSection({ email, linkedin, github }: ContactCtaSection
 
         {/* Title */}
         <h2
+          id="path-end-title"
           ref={titleRef}
           className="font-display text-section text-foreground leading-tight"
           style={{ overflow: "hidden" }}

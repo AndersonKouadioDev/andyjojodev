@@ -8,6 +8,7 @@ import { ProjectsShowcase } from "@/components/home/projects-showcase";
 import { SofaSection, HotspotService } from "@/components/home/sofa-section";
 import { ContactCtaSection } from "@/components/home/contact-cta-section";
 import { CustomCursor } from "@/components/ui/custom-cursor";
+import { ScrollPath } from "@/components/ui/scroll-path";
 import { getTranslations } from "next-intl/server";
 
 export default async function Home() {
@@ -65,7 +66,8 @@ export default async function Home() {
   }));
 
   return (
-    <div className="min-h-screen bg-background cursor-none-desktop">
+    <div className="relative min-h-screen bg-background cursor-none-desktop overflow-x-hidden">
+      <ScrollPath />
       <CustomCursor />
       <MainNav />
 
