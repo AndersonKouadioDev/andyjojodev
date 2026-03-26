@@ -6,7 +6,7 @@ import { useGLTF, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 
-const MODEL_URL = "http://dvsxt5681pvqm.cloudfront.net/portfolio/models/sofa/sofa.glb";
+const MODEL_URL = "https://dvsxt5681pvqm.cloudfront.net/portfolio/models/sofa/sofa.glb";
 
 // ─── 6 hotspot positions — sofa scale 6.0 ────────────────────────────────────
 export const HOTSPOT_WORLD = [
