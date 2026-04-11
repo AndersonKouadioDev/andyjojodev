@@ -8,8 +8,6 @@ export function SkillsSection() {
         "HTML/CSS",
         "JavaScript (ES6+)",
         "TypeScript",
-        "Dart",
-        "Java",
         "PHP",
         "Python",
       ],
@@ -31,14 +29,13 @@ export function SkillsSection() {
     },
     {
       category: "Mobile",
-      items: ["React Native", "Expo", "Flutter"],
+      items: ["React Native", "Expo"],
     },
     {
       category: "Back-end",
       items: [
         "Node.js",
         "NestJS",
-        "Spring Boot",
         "Laravel",
         "Django",
         "MySQL/PostgreSQL/MongoDB",

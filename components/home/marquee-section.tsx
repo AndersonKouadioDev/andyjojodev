@@ -3,7 +3,7 @@
 import { MarqueeTicker } from "@/components/ui/marquee-ticker";
 
 const STACK_ITEMS = [
-  "Next.js", "NestJS", "React Native", "Spring Boot", "Flutter",
+  "Next.js", "NestJS", "React Native",
   "TypeScript", "Docker", "PostgreSQL", "Microservices", "Laravel",
   "Figma", "CI/CD", "Kubernetes", "WebSocket", "Redis",
 ];
