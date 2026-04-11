@@ -2,17 +2,7 @@
   "ci": {
     "collect": {
       "settings": {
-        "maxWaitForLoad": 60000,
-        "throttlingMethod": "provided",
-        "throttling": {
-          "rttMs": 0,
-          "throughputKbps": 0,
-          "cpuSlowdownMultiplier": 1
-        },
-        "chromeFlags": "--no-sandbox --disable-dev-shm-usage --disable-gpu",
-        "pauseAfterFcpMs": 2000,
-        "pauseAfterLoadMs": 2000,
-        "cpuQuietThresholdMs": 10000
+        "maxWaitForLoad": 45000
       }
     },
     "assert": {
