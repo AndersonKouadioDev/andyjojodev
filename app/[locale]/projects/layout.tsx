@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Projets",
   description:
-    "17 projets livrés par Anderson Kouadio : applications web, mobile, backoffice, immobilier, e-commerce. Next.js, React Native, NestJS, Spring Boot.",
+    "17 projets livrés par Anderson Kouadio : applications web, mobile, backoffice, immobilier, e-commerce. Next.js, React Native, NestJS, Laravel, Django.",
   alternates: {
     canonical: `${siteConfig.url}/fr/projects`,
   },

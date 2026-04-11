@@ -10,6 +10,7 @@ export function SkillsSection() {
         "TypeScript",
         "PHP",
         "Python",
+        "Rust",
       ],
     },
     {
@@ -34,13 +35,13 @@ export function SkillsSection() {
     {
       category: "Back-end",
       items: [
-        "Node.js",
         "NestJS",
         "Laravel",
         "Django",
+        "Rust",
         "MySQL/PostgreSQL/MongoDB",
-        "Firebase/Supabase",
-        "API REST/GraphQL",
+        "Redis",
+        "API REST/WebSocket",
         "Microservices",
       ],
     },

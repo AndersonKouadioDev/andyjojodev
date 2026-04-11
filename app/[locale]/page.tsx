@@ -110,7 +110,7 @@ export default async function Home() {
     image: siteConfig.ogImage,
     jobTitle: "Développeur Fullstack & Tech Lead",
     description:
-      "Développeur Fullstack & Tech Lead basé à Abidjan, Côte d'Ivoire. Expert Next.js, NestJS, React Native.",
+      "Développeur Fullstack & Tech Lead basé à Abidjan, Côte d'Ivoire. Expert Next.js, NestJS, React Native, Laravel, Django.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Abidjan",
@@ -121,8 +121,8 @@ export default async function Home() {
       "https://www.linkedin.com/in/anderson-kouadio",
     ],
     knowsAbout: [
-      "Next.js", "React", "TypeScript", "NestJS",
-      "React Native", "Docker", "PostgreSQL", "Redis",
+      "Next.js", "React", "TypeScript", "NestJS", "Laravel",
+      "Django", "Rust", "React Native", "Docker", "PostgreSQL", "Redis", "MongoDB",
     ],
   };
 

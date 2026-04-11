@@ -78,7 +78,7 @@ const FLOATERS: {
           Stack principal
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-          {["Next.js", "NestJS", "React Native", "TypeScript"].map(t => (
+          {["Next.js", "NestJS", "React Native", "Docker", "TypeScript"].map(t => (
             <span key={t} style={{ fontSize: 10, fontWeight: 600, color: C.pillText, background: C.pill, borderRadius: 99, padding: "3px 9px", fontFamily: "var(--font-mono, monospace)", letterSpacing: "0.05em" }}>{t}</span>
           ))}
         </div>

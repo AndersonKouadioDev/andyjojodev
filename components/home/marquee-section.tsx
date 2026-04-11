@@ -3,9 +3,9 @@
 import { MarqueeTicker } from "@/components/ui/marquee-ticker";
 
 const STACK_ITEMS = [
-  "Next.js", "NestJS", "React Native",
-  "TypeScript", "Docker", "PostgreSQL", "Microservices", "Laravel",
-  "Figma", "CI/CD", "Kubernetes", "WebSocket", "Redis",
+  "Next.js", "NestJS", "React Native", "TypeScript", "Rust",
+  "Laravel", "Django", "Docker", "PostgreSQL", "MongoDB",
+  "Figma", "CI/CD", "WebSocket", "Redis", "Linux",
 ];
 
 export function MarqueeSection() {
