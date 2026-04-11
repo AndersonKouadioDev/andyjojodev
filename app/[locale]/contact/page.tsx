@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Mail, Phone, MapPin, Linkedin, Github, ArrowRight } from "lucide-react";
+import { MessageCircle, Phone, MapPin, Linkedin, Github, ArrowRight } from "lucide-react";
 import { MainNav } from "@/components/navigation/main-nav";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { MagneticButton } from "@/components/ui/magnetic-button";
@@ -27,6 +27,13 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const WHATSAPP_NUMBER = "2250554020623";
+
+function buildWhatsAppUrl(name: string, email: string, subject: string, message: string): string {
+  const text = `Bonjour Anderson,\n\nJe suis ${name} (${email}).\n\nSujet : ${subject}\n\n${message}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
 
 const formSchema = z.object({
   name: z.string().min(2),
@@ -47,10 +54,11 @@ export default function ContactPage() {
   });
 
   const onSubmit = (data: FormValues) => {
-    console.log(data);
     toast.success(contactT("success_message"), {
       description: contactT("success_description"),
     });
+    const url = buildWhatsAppUrl(data.name, data.email, data.subject, data.message);
+    window.open(url, "_blank", "noopener,noreferrer");
     form.reset();
   };
 
@@ -66,10 +74,10 @@ export default function ContactPage() {
 
   const contactItems = [
     {
-      icon: Mail,
-      label: "Email",
-      value: resumeT("email"),
-      href: `mailto:${resumeT("email")}`,
+      icon: MessageCircle,
+      label: contactT("label_whatsapp"),
+      value: "+225 05 54 020 623",
+      href: `https://wa.me/${WHATSAPP_NUMBER}`,
     },
     {
       icon: Phone,
@@ -136,13 +144,30 @@ export default function ContactPage() {
               </div>
             </div>
 
+            {/* WhatsApp direct CTA */}
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-card flex items-center gap-4 rounded-2xl p-5 border border-green-500/30 bg-green-500/10 hover:bg-green-500/20 transition-all duration-200 group cursor-pointer"
+            >
+              <div className="w-11 h-11 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400 group-hover:bg-green-500 group-hover:text-white transition-all duration-200 shrink-0">
+                <MessageCircle size={20} />
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-green-400 font-display">{contactT("whatsapp_direct")}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{contactT("whatsapp_direct_sub")}</p>
+              </div>
+              <ArrowRight size={14} className="ml-auto shrink-0 text-green-400/50 group-hover:text-green-400 transition-colors" />
+            </a>
+
             {/* Contact items */}
             {contactItems.map((item, i) => {
               const Icon = item.icon;
               const Wrapper = item.href ? "a" : "div";
               return (
                 <MagneticButton key={i} strength={0.15} className="w-full">
-                      <Wrapper
+                  <Wrapper
                     href={item.href ?? undefined}
                     target={item.href?.startsWith("http") ? "_blank" : undefined}
                     rel={item.href?.startsWith("http") ? "noopener noreferrer" : undefined}
@@ -272,11 +297,12 @@ export default function ContactPage() {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-display font-semibold rounded-xl glow-brand-sm transition-all duration-300"
+                      className="w-full bg-green-600 hover:bg-green-500 text-white font-display font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
                       disabled={form.formState.isSubmitting}
                     >
+                      <MessageCircle size={18} />
                       {contactT("send")}
-                      <ArrowRight size={16} className="ml-2" />
+                      <ArrowRight size={16} className="ml-auto" />
                     </Button>
                   </MagneticButton>
                 </form>

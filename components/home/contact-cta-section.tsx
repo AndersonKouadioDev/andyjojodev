@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { ArrowRight, Mail, Linkedin, Github } from "lucide-react";
+import { ArrowRight, MessageCircle, Linkedin, Github } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { Button } from "@/components/ui/button";
@@ -124,14 +124,14 @@ export function ContactCtaSection({ email, linkedin, github }: ContactCtaSection
           </MagneticButton>
 
           <MagneticButton>
-            <a href={`mailto:${email}`}>
+            <a href="https://wa.me/2250554020623" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
                 variant="outline"
-                className="font-display font-semibold px-8 rounded-xl border-border/50 hover:border-primary/40 hover:bg-foreground/5"
+                className="font-display font-semibold px-8 rounded-xl border-green-500/30 hover:border-green-500/60 hover:bg-green-500/10 text-green-400"
               >
-                <Mail size={16} className="mr-2" />
-                {email}
+                <MessageCircle size={16} className="mr-2" />
+                WhatsApp
               </Button>
             </a>
           </MagneticButton>

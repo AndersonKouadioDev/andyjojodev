@@ -461,14 +461,17 @@
     "label_location": "Location",
     "title_section_1": "Contact Information",
     "title_section_2": "Send me a message",
-    "send": "Send Message",
+    "send": "Send via WhatsApp",
     "name_placeholder": "Your name",
     "email_placeholder": "Your email",
     "subject_placeholder": "Subject",
     "message_placeholder": "Your message...",
     "message_input_placeholder": "Describe your project or request...",
     "subject_input_placeholder": "Freelance project, collaboration...",
-    "success_message": "Message sent!",
-    "success_description": "I'll get back to you as soon as possible."
+    "success_message": "Redirecting to WhatsApp...",
+    "success_description": "Your message has been pre-filled. Just hit send!",
+    "label_whatsapp": "WhatsApp",
+    "whatsapp_direct": "Chat on WhatsApp",
+    "whatsapp_direct_sub": "Fastest way to reach me"
   }
 }
