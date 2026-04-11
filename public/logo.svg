@@ -1,8 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
-  <!-- A letter - geometric -->
-  <path d="M6 32L14 8h2l8 24h-3.5l-2-6.5H11.5L9.5 32H6zm6.2-9.5h5.6L15 14.2h-.2L12.2 22.5z" fill="currentColor"/>
-  <!-- K letter - geometric -->
-  <path d="M24 8h3.5v10.5h.2L34 8h4l-7.5 12L38 32h-4.2l-6-10.2h-.2V32H24V8z" fill="currentColor"/>
-  <!-- Dot accent -->
-  <circle cx="36" cy="31" r="2.2" fill="currentColor" opacity="0.6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none">
+  <!--
+    "Nkyinkyim"
+    Adinkra symbol — Akan/Baoulé culture, Côte d'Ivoire
+    Wavy organic contour with more pronounced undulations
+  -->
+
+  <!-- Wavy contour — pronounced waves, asymmetric -->
+  <path
+    d="M24 2 Q32 -1 37 6 Q42 13 38 18 Q43 24 39 30 Q36 38 28 39 Q22 44 16 40 Q9 38 5 32 Q0 26 3 20 Q0 13 5 8 Q10 1 17 3 Q20 4 24 2Z"
+    stroke="currentColor"
+    stroke-width="3.2"
+    fill="none"
+    opacity="0.3"
+  />
+
+  <!-- Main Nkyinkyim path — slightly larger, centered -->
+  <path
+    d="M11 32 L11 24 L18 17 L18 24 L25 17 L25 24 L32 17"
+    stroke="currentColor"
+    stroke-width="3.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+
+  <!-- Accent dots at peaks -->
+  <circle cx="18" cy="17" r="1.5" fill="currentColor" opacity="0.45"/>
+  <circle cx="25" cy="17" r="1.5" fill="currentColor" opacity="0.45"/>
 </svg>
