@@ -15,13 +15,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Anderson Kouadio | Tech Lead & Fullstack Developer",
+  title: "Anderson Kouadio | Développeur Fullstack & IT Manager",
   description:
-    "Tech Lead & Développeur Fullstack Web & Mobile basé à Abidjan, Côte d'Ivoire. Expert Next.js, NestJS, React Native, Spring Boot. 5+ ans, 10+ projets livrés.",
+    "Développeur Fullstack & IT Manager basé à Abidjan, Côte d'Ivoire. Expert Next.js, NestJS, React Native, Spring Boot. 4+ ans, 10+ projets livrés.",
   keywords: [
     "Anderson Kouadio",
-    "Tech Lead",
-    "Fullstack Developer",
+    "Développeur Fullstack",
+    "IT Manager",
     "Next.js",
     "NestJS",
     "React Native",
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Anderson Kouadio" }],
   openGraph: {
-    title: "Anderson Kouadio | Tech Lead & Fullstack Developer",
+    title: "Anderson Kouadio | Développeur Fullstack & IT Manager",
     description:
-      "Tech Lead & Développeur Fullstack Web & Mobile. 5+ ans, 10+ projets livrés.",
+      "Développeur Fullstack & IT Manager. 4+ ans, 10+ projets livrés.",
     type: "website",
     locale: "fr_FR",
   },

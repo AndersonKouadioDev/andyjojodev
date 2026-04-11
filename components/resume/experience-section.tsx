@@ -4,10 +4,12 @@ import { getTranslations } from "next-intl/server";
 export async function ExperienceSection() {
   const t = await getTranslations("professional_experience");
   const keys = [
+    "experience_0",
     "experience_1",
     "experience_2",
     "experience_3",
     "experience_4",
+    "experience_5",
   ] as const;
 
   const experiences = keys.map((key) => ({

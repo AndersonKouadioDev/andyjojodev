@@ -163,7 +163,7 @@ export function ContactCtaSection({ email, linkedin, github }: ContactCtaSection
         {/* Footer bottom line */}
         <div className="pt-16 border-t border-border/20 w-full flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground/40 font-mono-brand">
           <span>Anderson Kouadio — Abidjan, Côte d&apos;Ivoire</span>
-          <span>© 2025 — {t("copyright")}</span>
+          <span>© 2026 — {t("copyright")}</span>
         </div>
       </div>
     </section>

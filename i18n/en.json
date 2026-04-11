@@ -7,14 +7,14 @@
     "contact": "Contact"
   },
   "resume": {
-    "title": "Tech Lead & Fullstack Web & Mobile Developer",
+    "title": "Fullstack Developer & IT Manager",
     "name": "Anderson Kouadio",
     "location": "Abidjan, Côte d'Ivoire",
     "email": "andersonkouadio0109@gmail.com",
     "phone": "+225 05 54 02 06 23",
     "linkedIn": "https://www.linkedin.com/in/n%E2%80%99guessan-joseph-anderson-kouadio-742645341/",
     "github": "https://github.com/AndersonKouadioDev",
-    "biography": "Passionate Fullstack Developer with solid expertise in JavaScript and modern technologies like React, Next.js, TypeScript and React Native. With multiple experiences on high-value projects (ERP, SaaS platforms, mobile apps), I design performant and user-centered interfaces. As a Tech Lead, I combine technical rigor, product sense and team management to deliver solutions that stand the test of time.",
+    "biography": "Fullstack Developer and IT Manager with over 4 years of experience in designing and deploying high-performance web and mobile solutions. With a dual technical and managerial expertise, I build complete application ecosystems and deliver strategic business solutions to drive company growth. Versatile, I master the full project lifecycle, from architecture to deployment, and I invest in knowledge sharing through junior developer training.",
     "open_to_work": true
   },
   "resume_section": {
@@ -28,34 +28,40 @@
   },
   "professional_experience": {
     "experience_0": {
-      "title": "Tech Lead",
-      "company": "LUNION-LAB – Abidjan",
-      "period": "Sept. 2024 – Nov. 2025",
-      "description": "Led a team of 10 developers using Agile SCRUM methodology<br/>Designed and delivered Turbo-Delivery (4 apps: ERP, Client, Delivery, Partner)<br/>Designed and delivered Chicken-Nation (Backoffice, Mobile App, Website)<br/>Backend microservices development (Spring Boot, NestJS, WebSocket, Google Maps)<br/>10+ Next.js websites deployed to production<br/>System architecture, code reviews, team mentoring"
+      "title": "IT Manager (Fixed-term)",
+      "company": "CHICKEN NATION – Abidjan",
+      "period": "Oct. 2025 – Present",
+      "description": "Maintenance and evolution of the application ecosystem (menu and order management backoffice, consumer mobile app)<br/>Design of CRM modules with analytical dashboards to centralize customer data and drive real-time business operations<br/>Implementation of a complete loyalty system: loyalty points, member card, discount vouchers and promotional codes"
     },
     "experience_1": {
+      "title": "Tech Lead",
+      "company": "LUNION-LAB – Abidjan",
+      "period": "Sept. 2024 – Oct. 2025",
+      "description": "Led a team of 10 developers using Agile SCRUM methodology<br/>Designed and delivered Turbo-Delivery (4 apps: ERP, Client, Delivery, Partner)<br/>Designed and delivered Chicken-Nation (Backoffice, Mobile App, Website)<br/>Backend microservices development (Spring Boot, NestJS, WebSocket, Google Maps)<br/>10+ Next.js websites deployed to production<br/>Led 2 six-month training sessions: web development (Next.js, NestJS) and Clean Architecture"
+    },
+    "experience_2": {
       "title": "Fullstack Developer (Fixed-term)",
       "company": "INNOV IMMOBILIER – Abidjan",
       "period": "Oct. 2023 – May 2024",
       "description": "Designed a modular business ERP with React, Tailwind CSS, PostgreSQL and Laravel<br/>Developed ERP Africa Booking (portal + Flutter mobile app)<br/>Built complex features (reservation management, IT maintenance)<br/>Set up CI/CD pipelines and version control with GitHub"
     },
-    "experience_2": {
+    "experience_3": {
       "title": "Fullstack Developer (Freelance)",
       "company": "AITECH GROUPE – Abidjan",
       "period": "March 2023 – July 2023",
-      "description": "Developed Tropic105 ERP with React + Zustand and Django architecture<br/>Developed POS Ciss St Moïse (Django + React.js, cash register & stock management)<br/>Navigation management, route security, custom design system<br/>Agile collaboration with product and design teams (Figma + Notion)"
-    },
-    "experience_3": {
-      "title": "Web Developer (Internship)",
-      "company": "Merradis Group – Abidjan",
-      "period": "May 2022 – Feb. 2023",
-      "description": "Full-stack ERP development, product strategy participation<br/>Technical documentation writing and client delivery support"
+      "description": "Deployment and technical refactoring of a POS for the Tropic105 client, with significant performance gains<br/>Developed POS Ciss St Moïse (Django + React.js, cash register & stock management)<br/>Created UI/UX mockups and prototypes with Figma"
     },
     "experience_4": {
-      "title": "Graphic Designer (Freelance)",
-      "company": "Grand-Bassam City Hall",
-      "period": "Jan. 2022 – March 2022",
-      "description": "Creation of digital materials (posters, newsletters, videos)<br/>Visual content optimization for municipal communication"
+      "title": "Developer (Internship)",
+      "company": "Merradis Group – Abidjan",
+      "period": "April 2022 – Feb. 2023",
+      "description": "Participated in ERP development to optimize internal business management<br/>Technical proposals and documentation writing<br/>Developed ERP Twins Immobilier (Laravel, TypeScript, VPS)"
+    },
+    "experience_5": {
+      "title": "Graphic Designer",
+      "company": "KITA TECHNOLOGIE (Internship) & Grand-Bassam City Hall (Freelance)",
+      "period": "Oct. 2021 – Oct. 2022",
+      "description": "Designed advertising posters, catalogs and communication materials for various clients<br/>Created visual mockups for large-format advertising billboards<br/>Social media page management and graphic content creation"
     }
   },
   "projects": {
@@ -265,7 +271,7 @@
     }
   },
   "stats": {
-    "years": "5+",
+    "years": "4+",
     "years_label": "years of experience",
     "projects": "10+",
     "projects_label": "projects delivered",
@@ -302,23 +308,28 @@
   },
   "education": {
     "diploma_1": {
-      "title": "ReactJS Certification",
-      "school": "GOMYCODE Côte d'Ivoire",
-      "year": "Jan. 2022 – June 2022"
+      "title": "Python Data Engineer",
+      "school": "DataCamp – Data Engineering",
+      "year": "2026"
     },
     "diploma_2": {
-      "title": "BTS Application Developer (IDA)",
-      "school": "HETEC",
-      "year": "2020 – 2021"
+      "title": "ReactJS Certification",
+      "school": "GOMYCODE Côte d'Ivoire",
+      "year": "2022"
     },
     "diploma_3": {
-      "title": "Bachelor Decision Informatics",
-      "school": "HETEC",
-      "year": "2020 – 2021"
+      "title": "Bachelor Decision Informatics (ID)",
+      "school": "HETEC – Bouaké",
+      "year": "2021 – 2023"
     },
     "diploma_4": {
-      "title": "Scientific Baccalaureate",
-      "school": "Lycée Djibo Soumako",
+      "title": "BTS Application Developer (IDA)",
+      "school": "HETEC – Bouaké",
+      "year": "2020 – 2021"
+    },
+    "diploma_5": {
+      "title": "Baccalaureate Series C",
+      "school": "Lycée Municipal Djibo Sounkalo – Bouaké",
       "year": "2018 – 2019"
     }
   },
@@ -353,16 +364,16 @@
   "language": {
     "french": {
       "title": "French",
-      "level": "Fluent"
+      "level": "Native"
     },
     "english": {
       "title": "English",
-      "level": "Bilingual"
+      "level": "B1 Level"
     }
   },
-  "interests": "Tech entrepreneurship • IT volunteering • Fullstack training (Next.js and NestJS) • Technical content creation • Design • Sports • Reading",
+  "interests": "Web & Mobile development trainer • Entrepreneur • Community Management & content creation • Reading • Swimming",
   "hero_section": {
-    "years_exp": "5+ years of experience",
+    "years_exp": "4+ years of experience",
     "projects_delivered": "10+ projects delivered",
     "cta_projects": "View my projects",
     "cta_contact": "Contact me"
@@ -371,7 +382,7 @@
     "eyebrow": "About",
     "title_1": "Passionate Fullstack",
     "title_2": "Developer",
-    "title_3": "Tech Lead by",
+    "title_3": "IT Manager by",
     "title_4": "conviction",
     "photo_label": "Professional photo"
   },
@@ -409,7 +420,7 @@
     "eyebrow": "Skills",
     "title_1": "My",
     "title_2": "expertise",
-    "subtitle": "Technologies and skills mastered over 5+ years of projects.",
+    "subtitle": "Technologies and skills mastered over 4+ years of projects.",
     "radar_title": "Overview",
     "soft_title": "Soft Skills"
   },

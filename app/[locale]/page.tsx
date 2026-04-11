@@ -19,7 +19,7 @@ export default async function Home() {
   const projectsT = await getTranslations("projects");
 
   // Experiences
-  const expKeys = ["experience_0", "experience_1", "experience_2", "experience_3", "experience_4"] as const;
+  const expKeys = ["experience_0", "experience_1", "experience_2", "experience_3", "experience_4", "experience_5"] as const;
   const experiences = expKeys.map((key, i) => ({
     title: expT(`${key}.title`),
     company: expT(`${key}.company`),
@@ -30,7 +30,7 @@ export default async function Home() {
 
   // Stats
   const stats = [
-    { value: 5, suffix: "+", label: statsT("years_label") },
+    { value: 4, suffix: "+", label: statsT("years_label") },
     { value: 10, suffix: "+", label: statsT("projects_label") },
     { value: 10, suffix: "", label: statsT("devs_label") },
     { value: 3, suffix: "", label: statsT("sectors_label") },
