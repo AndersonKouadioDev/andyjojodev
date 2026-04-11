@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { siteConfig } from "@/lib/site";
 import { MainNav } from "@/components/navigation/main-nav";
 import { HeroSection } from "@/components/home/hero-section";
 import { MarqueeSection } from "@/components/home/marquee-section";
@@ -82,7 +83,37 @@ export default async function Home() {
     github_url: projectsT(`${key}.github_url`),
   }));
 
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Anderson Kouadio",
+    alternateName: "AndyJojo",
+    url: siteConfig.url,
+    image: siteConfig.ogImage,
+    jobTitle: "Développeur Fullstack & Tech Lead",
+    description:
+      "Développeur Fullstack & Tech Lead basé à Abidjan, Côte d'Ivoire. Expert Next.js, NestJS, React Native, Spring Boot.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Abidjan",
+      addressCountry: "CI",
+    },
+    sameAs: [
+      "https://github.com/AndersonKouadioDev",
+      "https://www.linkedin.com/in/anderson-kouadio",
+    ],
+    knowsAbout: [
+      "Next.js", "React", "TypeScript", "NestJS", "Spring Boot",
+      "React Native", "Flutter", "Docker", "PostgreSQL", "Redis",
+    ],
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
     <div className="relative min-h-screen bg-background cursor-none-desktop overflow-x-hidden">
       <ScrollPath />
       <CustomCursor />
@@ -134,5 +165,6 @@ export default async function Home() {
         />
       </Suspense>
     </div>
+    </>
   );
 }

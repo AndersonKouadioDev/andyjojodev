@@ -158,7 +158,7 @@ export function AboutSection({ biography, stats }: AboutSectionProps) {
             {/* Photo */}
             <div className="relative w-full max-w-full lg:max-w-xs h-80 rounded-2xl overflow-hidden border border-border/20 shadow-2xl group">
               <Image
-                src="/images/about/me.png"
+                src="/images/about/me.webp"
                 alt="Anderson Kouadio"
                 fill
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
