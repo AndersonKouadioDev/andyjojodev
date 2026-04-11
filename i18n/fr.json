@@ -287,11 +287,11 @@
     },
     "service_2": {
       "title": "Mobile App",
-      "description": "Applications iOS & Android avec React Native et Flutter."
+      "description": "Applications iOS & Android avec React Native."
     },
     "service_3": {
       "title": "Backend & API",
-      "description": "APIs robustes et architectures microservices avec NestJS, Spring Boot ou Laravel."
+      "description": "APIs robustes et architectures microservices avec NestJS, Laravel ou Django."
     },
     "service_4": {
       "title": "Tech Lead",

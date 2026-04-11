@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | Anderson Kouadio",
   },
   description:
-    "Développeur Fullstack & Tech Lead basé à Abidjan, Côte d'Ivoire. Expert Next.js, NestJS, React Native, Spring Boot. 4+ ans, 10+ projets livrés.",
+    "Développeur Fullstack & Tech Lead basé à Abidjan, Côte d'Ivoire. Expert Next.js, NestJS, React Native, Laravel. 4+ ans, 10+ projets livrés.",
   keywords: [
     "Anderson Kouadio",
     "Développeur Fullstack",
@@ -38,7 +38,9 @@ export const metadata: Metadata = {
     "Next.js",
     "NestJS",
     "React Native",
-    "Spring Boot",
+    "Laravel",
+    "Django",
+    "Rust",
     "Abidjan",
     "Côte d'Ivoire",
     "portfolio développeur",

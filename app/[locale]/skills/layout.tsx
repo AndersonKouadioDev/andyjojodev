@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Compétences",
   description:
-    "Compétences techniques d'Anderson Kouadio : Next.js, TypeScript, NestJS, Spring Boot, React Native, Flutter, Docker, PostgreSQL — 4+ ans d'expérience.",
+    "Compétences techniques d'Anderson Kouadio : Next.js, TypeScript, NestJS, Laravel, Django, React Native, Docker, PostgreSQL — 4+ ans d'expérience.",
   alternates: {
     canonical: `${siteConfig.url}/fr/skills`,
   },
