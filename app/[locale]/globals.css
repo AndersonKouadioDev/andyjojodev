@@ -209,7 +209,7 @@
     font-weight: 700;
   }
   .font-mono-brand {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
   }
 
   /* Hero responsive size — fits within a 50% column on all screens */
@@ -339,7 +339,7 @@
 }
 .placeholder-zone::after {
   content: attr(data-label);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
   font-size: 0.7rem;
   color: oklch(0.65 0.22 36 / 60%);
   text-transform: uppercase;

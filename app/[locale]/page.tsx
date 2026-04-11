@@ -1,15 +1,32 @@
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import { MainNav } from "@/components/navigation/main-nav";
 import { HeroSection } from "@/components/home/hero-section";
 import { MarqueeSection } from "@/components/home/marquee-section";
-import { AboutSection } from "@/components/home/about-section";
-import { ExperienceSection } from "@/components/home/experience-section";
-import { StackSection } from "@/components/home/stack-section";
-import { ProjectsShowcase } from "@/components/home/projects-showcase";
-import { SofaSection, HotspotService } from "@/components/home/sofa-section";
-import { ContactCtaSection } from "@/components/home/contact-cta-section";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { ScrollPath } from "@/components/ui/scroll-path";
 import { getTranslations } from "next-intl/server";
+import type { HotspotService } from "@/components/home/sofa-section";
+
+// Sections below the fold — loaded in separate chunks
+const AboutSection = dynamic(() =>
+  import("@/components/home/about-section").then((m) => ({ default: m.AboutSection }))
+);
+const ExperienceSection = dynamic(() =>
+  import("@/components/home/experience-section").then((m) => ({ default: m.ExperienceSection }))
+);
+const StackSection = dynamic(() =>
+  import("@/components/home/stack-section").then((m) => ({ default: m.StackSection }))
+);
+const ProjectsShowcase = dynamic(() =>
+  import("@/components/home/projects-showcase").then((m) => ({ default: m.ProjectsShowcase }))
+);
+const SofaSection = dynamic(() =>
+  import("@/components/home/sofa-section").then((m) => ({ default: m.SofaSection }))
+);
+const ContactCtaSection = dynamic(() =>
+  import("@/components/home/contact-cta-section").then((m) => ({ default: m.ContactCtaSection }))
+);
 
 export default async function Home() {
   const t = await getTranslations("resume");
@@ -84,26 +101,38 @@ export default async function Home() {
       <MarqueeSection />
 
       {/* 3 — About */}
-      <AboutSection biography={t("biography")} stats={stats} />
+      <Suspense fallback={<div className="min-h-[600px]" />}>
+        <AboutSection biography={t("biography")} stats={stats} />
+      </Suspense>
 
       {/* 4 — Experience */}
-      <ExperienceSection experiences={experiences} />
+      <Suspense fallback={<div className="min-h-[500px]" />}>
+        <ExperienceSection experiences={experiences} />
+      </Suspense>
 
       {/* 5 — Stack */}
-      <StackSection />
+      <Suspense fallback={<div className="min-h-[500px]" />}>
+        <StackSection />
+      </Suspense>
 
       {/* 6 — Projects showcase */}
-      <ProjectsShowcase projects={projects} />
+      <Suspense fallback={<div className="min-h-[600px]" />}>
+        <ProjectsShowcase projects={projects} />
+      </Suspense>
 
       {/* 7 — Sofa immersif (services) */}
-      <SofaSection services={sofaServices} />
+      <Suspense fallback={<div className="min-h-[700px]" />}>
+        <SofaSection services={sofaServices} />
+      </Suspense>
 
       {/* 8 — Contact CTA */}
-      <ContactCtaSection
-        email={t("email")}
-        linkedin={t("linkedIn")}
-        github={t("github")}
-      />
+      <Suspense fallback={<div className="min-h-[300px]" />}>
+        <ContactCtaSection
+          email={t("email")}
+          linkedin={t("linkedIn")}
+          github={t("github")}
+        />
+      </Suspense>
     </div>
   );
 }

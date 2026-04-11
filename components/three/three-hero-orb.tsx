@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, Float, Sphere, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
@@ -74,17 +74,37 @@ function StatueMesh() {
   );
 }
 
-if (typeof window !== "undefined") {
-  useGLTF.preload("https://dvsxt5681pvqm.cloudfront.net/portfolio/models/ancient-baoule-queen-statue/source/model.glb");
-}
+const STATUE_URL = "https://dvsxt5681pvqm.cloudfront.net/portfolio/models/ancient-baoule-queen-statue/source/model.glb";
 
 interface ThreeHeroOrbProps {
   className?: string;
 }
 
 export function ThreeHeroOrb({ className }: ThreeHeroOrbProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [preloaded, setPreloaded] = useState(false);
+
+  // Preload model only when the canvas container enters the viewport
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || preloaded) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          useGLTF.preload(STATUE_URL);
+          setPreloaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [preloaded]);
+
   return (
     <div
+      ref={containerRef}
       className={className}
       style={{
         maskImage: "radial-gradient(ellipse 80% 85% at 50% 50%, black 55%, transparent 100%)",

@@ -9,10 +9,11 @@ import { useTheme } from "next-themes";
 import { ArrowRight, MapPin, Github, Linkedin } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 const ThreeHeroOrb = dynamic(
   () => import("@/components/three/three-hero-orb").then(m => ({ default: m.ThreeHeroOrb })),
-  { ssr: false }
+  { ssr: false, loading: () => <div className="w-full h-full" /> }
 );
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -264,7 +265,9 @@ export function HeroSection({ name, title, location, github, linkedin }: HeroSec
             ref={orbRef}
             className="flex flex-col items-center justify-center lg:items-end gap-2"
           >
-            <ThreeHeroOrb className="w-full h-[420px] sm:w-[420px] sm:h-[500px] md:w-[500px] md:h-[580px] lg:w-[560px] lg:h-[620px]" />
+            <Suspense fallback={<div className="w-full h-[420px] sm:w-[420px] sm:h-[500px] md:w-[500px] md:h-[580px] lg:w-[560px] lg:h-[620px]" />}>
+              <ThreeHeroOrb className="w-full h-[420px] sm:w-[420px] sm:h-[500px] md:w-[500px] md:h-[580px] lg:w-[560px] lg:h-[620px]" />
+            </Suspense>
 
             {/* Statue caption — below canvas, no overlap */}
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/50 bg-background/60 backdrop-blur-sm self-center lg:self-end lg:mr-6">

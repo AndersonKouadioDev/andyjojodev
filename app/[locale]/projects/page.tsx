@@ -111,7 +111,7 @@ export default function ProjectsPage() {
         {hovered !== null && projects[hovered] && (
           <div className="w-52 h-34 rounded-xl overflow-hidden shadow-2xl border border-border/20">
             <Image
-              src={`/images/projects/${projects[hovered].placeholder_image}.png`}
+              src={`/images/projects/${projects[hovered].placeholder_image}.webp`}
               alt={projects[hovered].title}
               width={208}
               height={136}
@@ -169,7 +169,7 @@ export default function ProjectsPage() {
               {/* Project image */}
               <div className="relative w-full h-44 overflow-hidden">
                 <Image
-                  src={`/images/projects/${project.placeholder_image}.png`}
+                  src={`/images/projects/${project.placeholder_image}.webp`}
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -129,7 +129,7 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
           {activeProject !== null && showcased[activeProject] && (
             <div className="w-44 h-28 rounded-xl overflow-hidden shadow-2xl border border-border/20">
               <Image
-                src={`/images/projects/${showcased[activeProject].placeholder_image}.png`}
+                src={`/images/projects/${showcased[activeProject].placeholder_image}.webp`}
                 alt={showcased[activeProject].title}
                 width={176}
                 height={112}
@@ -156,7 +156,7 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
               {/* Project image */}
               <div className="relative w-full h-48 overflow-hidden">
                 <Image
-                  src={`/images/projects/${project.placeholder_image}.png`}
+                  src={`/images/projects/${project.placeholder_image}.webp`}
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

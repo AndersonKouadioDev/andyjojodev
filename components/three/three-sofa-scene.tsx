@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useCallback, Suspense } from "react";
+import { useRef, useEffect, useCallback, useState, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
@@ -273,11 +273,32 @@ interface ThreeSofaSceneProps {
 }
 
 export function ThreeSofaScene({ isDark, isMobile, activeHotspot, onHotspotClick, showHotspots = true, className, style }: ThreeSofaSceneProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [preloaded, setPreloaded] = useState(false);
+
+  // Preload model only when the sofa section approaches the viewport
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || preloaded) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          useGLTF.preload(MODEL_URL);
+          setPreloaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [preloaded]);
+
   // Showroom mode: wider FOV + much closer camera to fill the panel
   const fov = showHotspots ? (isMobile ? 82 : 70) : 85;
   const camPos: [number, number, number] = showHotspots ? [0, 3.6, 5.5] : [0, 1.6, 3.8];
   return (
-    <div className={className} style={{ touchAction: "none", ...style }}>
+    <div ref={containerRef} className={className} style={{ touchAction: "none", ...style }}>
       <Canvas
         camera={{ position: camPos, fov }}
         gl={{ antialias: true, alpha: true }}
@@ -290,6 +311,3 @@ export function ThreeSofaScene({ isDark, isMobile, activeHotspot, onHotspotClick
   );
 }
 
-if (typeof window !== "undefined") {
-  useGLTF.preload(MODEL_URL);
-}
