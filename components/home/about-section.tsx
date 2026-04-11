@@ -9,7 +9,7 @@ import { CounterUp } from "@/components/ui/counter-up";
 import dynamic from "next/dynamic";
 const ThreeBlob = dynamic(
   () => import("@/components/three/three-blob").then(m => ({ default: m.ThreeBlob })),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 );
 import { useTranslations } from "next-intl";
 import Image from "next/image";

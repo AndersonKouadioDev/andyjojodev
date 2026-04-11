@@ -1,6 +1,24 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { siteConfig } from "@/lib/site";
+
+// Revalidate every 24 hours — content is translation-driven, rarely changes
+export const revalidate = 86400;
+
+function SectionSkeleton({ height }: { height: string }) {
+  return (
+    <div className={`${height} w-full px-6 md:px-10 py-16 flex flex-col gap-6`}>
+      <div className="h-3 w-24 rounded-full bg-white/5 animate-pulse" />
+      <div className="h-8 w-64 rounded-xl bg-white/5 animate-pulse" />
+      <div className="h-4 w-48 rounded-full bg-white/5 animate-pulse" />
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="h-32 rounded-2xl bg-white/4 animate-pulse" style={{ animationDelay: `${i * 80}ms` }} />
+        ))}
+      </div>
+    </div>
+  );
+}
 import { MainNav } from "@/components/navigation/main-nav";
 import { HeroSection } from "@/components/home/hero-section";
 import { MarqueeSection } from "@/components/home/marquee-section";
@@ -132,32 +150,32 @@ export default async function Home() {
       <MarqueeSection />
 
       {/* 3 — About */}
-      <Suspense fallback={<div className="min-h-[600px]" />}>
+      <Suspense fallback={<SectionSkeleton height="min-h-[600px]" />}>
         <AboutSection biography={t("biography")} stats={stats} />
       </Suspense>
 
       {/* 4 — Experience */}
-      <Suspense fallback={<div className="min-h-[500px]" />}>
+      <Suspense fallback={<SectionSkeleton height="min-h-[500px]" />}>
         <ExperienceSection experiences={experiences} />
       </Suspense>
 
       {/* 5 — Stack */}
-      <Suspense fallback={<div className="min-h-[500px]" />}>
+      <Suspense fallback={<SectionSkeleton height="min-h-[500px]" />}>
         <StackSection />
       </Suspense>
 
       {/* 6 — Projects showcase */}
-      <Suspense fallback={<div className="min-h-[600px]" />}>
+      <Suspense fallback={<SectionSkeleton height="min-h-[600px]" />}>
         <ProjectsShowcase projects={projects} />
       </Suspense>
 
       {/* 7 — Sofa immersif (services) */}
-      <Suspense fallback={<div className="min-h-[700px]" />}>
+      <Suspense fallback={<SectionSkeleton height="min-h-[700px]" />}>
         <SofaSection services={sofaServices} />
       </Suspense>
 
       {/* 8 — Contact CTA */}
-      <Suspense fallback={<div className="min-h-[300px]" />}>
+      <Suspense fallback={<SectionSkeleton height="min-h-[300px]" />}>
         <ContactCtaSection
           email={t("email")}
           linkedin={t("linkedIn")}

@@ -23,6 +23,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 86400;
+
 export default function SkillsLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

@@ -1,6 +1,5 @@
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
-import me_image from "@/public/me.png";
 interface ResumeHeaderProps {
   name: string;
   title: string;
@@ -24,7 +23,7 @@ export function ResumeHeader({
     <header className="flex flex-col md:flex-row gap-8 items-center mb-8 pb-6 border-b border-primary/80 dark:border-primary/60 transition-colors duration-300">
       <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-primary/20">
         <Image
-          src={me_image}
+          src="/images/about/me.webp"
           alt={name}
           fill
           className="object-cover object-top"

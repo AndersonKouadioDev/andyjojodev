@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
 const ThreeCursorBlob = dynamic(
   () => import("@/components/three/three-cursor-blob").then(m => ({ default: m.ThreeCursorBlob })),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 );
 import { useTranslations } from "next-intl";
 

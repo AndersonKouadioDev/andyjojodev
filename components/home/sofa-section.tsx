@@ -10,7 +10,14 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 const ThreeSofaScene = dynamic(
   () => import("@/components/three/three-sofa-scene").then(m => ({ default: m.ThreeSofaScene })),
-  { ssr: false }
+  {
+    ssr: false,
+    loading: () => (
+      <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+        <div className="w-24 h-24 rounded-full border border-primary/20 animate-pulse bg-primary/5" />
+      </div>
+    ),
+  }
 );
 import { cn } from "@/lib/utils";
 
