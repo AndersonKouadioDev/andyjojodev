@@ -24,6 +24,7 @@ export function MainNav() {
     { label: t("home"),     href: "/",         sub: "— Présentation" },
     { label: t("projects"), href: "/projects",  sub: "— 17 réalisations" },
     { label: t("skills"),   href: "/skills",    sub: "— Stack tech" },
+    { label: "CV",          href: "/resume",    sub: "— Téléchargeable" },
     { label: t("contact"),  href: "/contact",   sub: "— Disponible" },
   ];
 

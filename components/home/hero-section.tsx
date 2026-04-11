@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "next-themes";
-import { ArrowRight, MapPin, Github, Linkedin } from "lucide-react";
+import { ArrowRight, MapPin, Github, Linkedin, Download } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
@@ -234,6 +234,24 @@ export function HeroSection({ name, title, location, github, linkedin }: HeroSec
                     {heroT("cta_contact")}
                   </Button>
                 </Link>
+              </MagneticButton>
+
+              <MagneticButton>
+                <a
+                  href="/cv/CV_Anderson_KOUADIO.pdf"
+                  download="CV_Anderson_KOUADIO.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    size="lg"
+                    variant="ghost"
+                    className="font-display font-semibold px-6 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-300"
+                  >
+                    <Download size={15} className="mr-2" />
+                    CV
+                  </Button>
+                </a>
               </MagneticButton>
 
               {/* Social links */}
