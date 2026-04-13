@@ -116,7 +116,7 @@ export function MainNav() {
           className="flex items-center shrink-0 group"
           onClick={() => { setOpen(false); setVisible(false); }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 34" fill="none" className="h-7 w-auto transition-transform duration-300 group-hover:scale-110 text-foreground group-hover:text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 34" fill="none" className="h-5 w-auto transition-transform duration-300 group-hover:scale-110 text-foreground group-hover:text-primary">
               <path d="M3 30 L15 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
               <path d="M27 30 L15 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
               <path d="M8 20 L14 12 L20 20 L26 12 L32 20 L38 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
