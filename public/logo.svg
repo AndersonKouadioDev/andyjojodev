@@ -1,30 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 34" fill="none">
   <!--
-    "Nkyinkyim"
-    Adinkra symbol — Akan/Baoulé culture, Côte d'Ivoire
-    Wavy organic contour with more pronounced undulations
+    "AK" ligature
+    The Nkyinkyim zigzag flows through both letters:
+    - Forms the left stroke of A, the crossbar, and the strokes of K
+    - One continuous cultural DNA running through the initials
   -->
 
-  <!-- Wavy contour — pronounced waves, asymmetric -->
+  <!-- Left leg of A -->
   <path
-    d="M24 2 Q32 -1 37 6 Q42 13 38 18 Q43 24 39 30 Q36 38 28 39 Q22 44 16 40 Q9 38 5 32 Q0 26 3 20 Q0 13 5 8 Q10 1 17 3 Q20 4 24 2Z"
+    d="M3 30 L15 4"
     stroke="currentColor"
-    stroke-width="3.2"
+    stroke-width="3"
+    stroke-linecap="round"
     fill="none"
-    opacity="0.3"
   />
 
-  <!-- Main Nkyinkyim path — slightly larger, centered -->
+  <!-- Right leg of A flowing into K's stem -->
   <path
-    d="M11 32 L11 24 L18 17 L18 24 L25 17 L25 24 L32 17"
+    d="M27 30 L15 4"
     stroke="currentColor"
-    stroke-width="3.2"
+    stroke-width="3"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <!-- Nkyinkyim zigzag as the crossbar of A + strokes of K -->
+  <path
+    d="M8 20 L14 12 L20 20 L26 12 L32 20 L38 4"
+    stroke="currentColor"
+    stroke-width="3"
     stroke-linecap="round"
     stroke-linejoin="round"
     fill="none"
   />
 
-  <!-- Accent dots at peaks -->
-  <circle cx="18" cy="17" r="1.5" fill="currentColor" opacity="0.45"/>
-  <circle cx="25" cy="17" r="1.5" fill="currentColor" opacity="0.45"/>
+  <!-- K lower stroke — extends from the zigzag -->
+  <path
+    d="M32 20 L42 30"
+    stroke="currentColor"
+    stroke-width="3"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <!-- K vertical stem -->
+  <path
+    d="M32 4 L32 30"
+    stroke="currentColor"
+    stroke-width="3"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <!-- Accent dots at zigzag peaks -->
+  <circle cx="14" cy="12" r="1.5" fill="currentColor" opacity="0.4"/>
+  <circle cx="26" cy="12" r="1.5" fill="currentColor" opacity="0.4"/>
 </svg>

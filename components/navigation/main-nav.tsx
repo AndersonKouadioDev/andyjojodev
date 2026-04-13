@@ -116,11 +116,14 @@ export function MainNav() {
           className="flex items-center shrink-0 group"
           onClick={() => { setOpen(false); setVisible(false); }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" className="h-8 w-8 transition-transform duration-300 group-hover:scale-110 text-foreground group-hover:text-primary">
-              <path d="M24 2 Q32 -1 37 6 Q42 13 38 18 Q43 24 39 30 Q36 38 28 39 Q22 44 16 40 Q9 38 5 32 Q0 26 3 20 Q0 13 5 8 Q10 1 17 3 Q20 4 24 2Z" stroke="currentColor" strokeWidth="3.2" opacity="0.3"/>
-              <path d="M11 32 L11 24 L18 17 L18 24 L25 17 L25 24 L32 17" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="18" cy="17" r="1.5" fill="currentColor" opacity="0.45"/>
-              <circle cx="25" cy="17" r="1.5" fill="currentColor" opacity="0.45"/>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 34" fill="none" className="h-7 w-auto transition-transform duration-300 group-hover:scale-110 text-foreground group-hover:text-primary">
+              <path d="M3 30 L15 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+              <path d="M27 30 L15 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+              <path d="M8 20 L14 12 L20 20 L26 12 L32 20 L38 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M32 20 L42 30" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+              <path d="M32 4 L32 30" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+              <circle cx="14" cy="12" r="1.5" fill="currentColor" opacity="0.4"/>
+              <circle cx="26" cy="12" r="1.5" fill="currentColor" opacity="0.4"/>
             </svg>
         </Link>
 
