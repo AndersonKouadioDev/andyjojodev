@@ -249,7 +249,7 @@ export function HeroSection({ name, title, location, github, linkedin }: HeroSec
                     className="font-display font-semibold px-6 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-300"
                   >
                     <Download size={15} className="mr-2" />
-                    CV
+                    {heroT("cta_cv")}
                   </Button>
                 </a>
               </MagneticButton>
