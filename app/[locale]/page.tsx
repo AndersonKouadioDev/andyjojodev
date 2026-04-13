@@ -25,7 +25,7 @@ import { MarqueeSection } from "@/components/home/marquee-section";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { ScrollPath } from "@/components/ui/scroll-path";
 import { getTranslations } from "next-intl/server";
-import type { HotspotService } from "@/components/home/sofa-section";
+import type { Service } from "@/components/home/services-section";
 
 // Sections below the fold — loaded in separate chunks
 const AboutSection = dynamic(() =>
@@ -40,8 +40,8 @@ const StackSection = dynamic(() =>
 const ProjectsShowcase = dynamic(() =>
   import("@/components/home/projects-showcase").then((m) => ({ default: m.ProjectsShowcase }))
 );
-const SofaSection = dynamic(() =>
-  import("@/components/home/sofa-section").then((m) => ({ default: m.SofaSection }))
+const ServicesSection = dynamic(() =>
+  import("@/components/home/services-section").then((m) => ({ default: m.ServicesSection }))
 );
 const ContactCtaSection = dynamic(() =>
   import("@/components/home/contact-cta-section").then((m) => ({ default: m.ContactCtaSection }))
@@ -72,13 +72,11 @@ export default async function Home() {
     { value: 3, suffix: "", label: statsT("sectors_label") },
   ];
 
-  // Services → 6 hotspots sofa
+  // Services
   const serviceKeys = ["service_1", "service_2", "service_3", "service_4", "service_5", "service_6"] as const;
-  const serviceCategories = ["web", "mobile", "backend", "lead", "design", "devops"];
-  const sofaServices: HotspotService[] = serviceKeys.map((key, i) => ({
+  const services: Service[] = serviceKeys.map((key) => ({
     title: servicesT(`${key}.title`),
     description: servicesT(`${key}.description`),
-    category: serviceCategories[i],
   }));
 
   // Projects
@@ -108,9 +106,9 @@ export default async function Home() {
     alternateName: "AndyJojo",
     url: siteConfig.url,
     image: siteConfig.ogImage,
-    jobTitle: "Développeur Fullstack & Tech Lead",
+    jobTitle: "Développeur Fullstack & IT Manager",
     description:
-      "Développeur Fullstack & Tech Lead basé à Abidjan, Côte d'Ivoire. Expert Next.js, NestJS, React Native, Laravel, Django.",
+      "Développeur Fullstack & IT Manager basé à Abidjan, Côte d'Ivoire. Expert Next.js, NestJS, React Native, Laravel, Django.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Abidjan",
@@ -169,9 +167,9 @@ export default async function Home() {
         <ProjectsShowcase projects={projects} />
       </Suspense>
 
-      {/* 7 — Sofa immersif (services) */}
-      <Suspense fallback={<SectionSkeleton height="min-h-[700px]" />}>
-        <SofaSection services={sofaServices} />
+      {/* 7 — Services */}
+      <Suspense fallback={<SectionSkeleton height="min-h-[500px]" />}>
+        <ServicesSection services={services} />
       </Suspense>
 
       {/* 8 — Contact CTA */}
