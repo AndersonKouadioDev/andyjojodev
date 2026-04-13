@@ -178,8 +178,8 @@ export function HeroSection({ name, title, location, github, linkedin }: HeroSec
               className="font-display text-hero text-foreground leading-none"
               style={{ perspective: "800px" }}
             >
-              {name}
-              <span className="text-primary">.</span>
+              {name.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="text-primary">{name.split(" ").at(-1)}</span>
             </h1>
 
             {/* Title */}
