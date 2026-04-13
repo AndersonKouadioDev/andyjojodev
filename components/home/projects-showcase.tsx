@@ -77,16 +77,20 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
     gsap.set(cards, { opacity: 0, y: 30 });
   }, []);
 
-  // Hover preview follows cursor
+  // Hover preview follows cursor (fixed position, always visible)
   const handleMouseMove = (e: React.MouseEvent, idx: number) => {
     const preview = previewRef.current;
     if (!preview || activeProject !== idx) return;
-    const rect = sectionRef.current?.getBoundingClientRect();
-    if (!rect) return;
+    // Position above cursor, flip below if too close to top
+    const previewH = 128;
+    const margin = 16;
+    const aboveY = e.clientY - previewH - margin;
+    const belowY = e.clientY + margin;
+    const y = aboveY > 0 ? aboveY : belowY;
     gsap.to(preview, {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top - 80,
-      duration: 0.25,
+      x: e.clientX,
+      y,
+      duration: 0.2,
       ease: "power2.out",
     });
   };
@@ -120,11 +124,11 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
           </MagneticButton>
         </div>
 
-        {/* Hover preview */}
+        {/* Hover preview — fixed so it never clips */}
         <div
           ref={previewRef}
-          className="absolute pointer-events-none z-30 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200"
-          style={{ opacity: activeProject !== null ? 1 : 0 }}
+          className="fixed pointer-events-none z-[100] -translate-x-1/2 transition-opacity duration-200"
+          style={{ opacity: activeProject !== null ? 1 : 0, top: 0, left: 0 }}
         >
           {activeProject !== null && showcased[activeProject] && (
             <div className="w-44 h-28 rounded-xl overflow-hidden shadow-2xl border border-border/20">
