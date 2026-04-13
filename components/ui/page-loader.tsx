@@ -312,25 +312,42 @@ export function PageLoader() {
     }, 300);
   }, [simDone, threeLoaded]);
 
-  // ── Route change — useLayoutEffect to prevent white flash ─────────────────
-  // State updates here are flushed synchronously before the browser paints.
+  // ── Intercept link clicks — show loader IMMEDIATELY on click ──────────────
+  // pathname only updates AFTER Next.js finishes fetching. We can't wait for that.
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      const anchor = (e.target as HTMLElement).closest("a");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (!href || href.startsWith("http") || href.startsWith("#") || href.startsWith("mailto:")) return;
+      // Extract pathname without locale prefix for comparison
+      const currentPath = window.location.pathname;
+      // Resolve href relative to current location
+      const url = new URL(href, window.location.origin);
+      if (url.pathname === currentPath) return;
+      // It's an internal navigation to a different page — show loader now
+      exitingRef.current = false;
+      isRouteChange.current = true;
+      setVisible(true);
+      setProgress(0);
+      setSimDone(false);
+      setThreeLoaded(false);
+      setAnimKey(k => k + 1);
+    }
+    document.addEventListener("click", handleClick, true);
+    return () => document.removeEventListener("click", handleClick, true);
+  }, []);
+
+  // ── Route change — sync prevPathname when pathname actually changes ──────
   useLayoutEffect(() => {
     if (prevPathname.current === null) { prevPathname.current = pathname; return; }
     if (prevPathname.current === pathname) return;
     prevPathname.current = pathname;
-    isRouteChange.current = true;
-    exitingRef.current = false;
-    setVisible(true);
-    setProgress(0);
-    setSimDone(false);
-    setThreeLoaded(false);
-    setAnimKey(k => k + 1);
   }, [pathname]);
 
-  // ── Route change — progress tween (async, after layout) ──────────────────
+  // ── Route change — progress tween (triggered by animKey on each nav) ─────
   useEffect(() => {
-    if (!isRouteChange.current) return;
-    isRouteChange.current = false;
+    if (animKey === 0) return; // skip initial mount
     const proxy = { v: 0 };
     const tween = gsap.to(proxy, {
       v: 90, duration: MIN_DISPLAY, ease: "power2.out",
@@ -339,7 +356,7 @@ export function PageLoader() {
     });
     const t = setTimeout(() => setThreeLoaded(true), MIN_DISPLAY * 800);
     return () => { tween.kill(); clearTimeout(t); };
-  }, [pathname]);
+  }, [animKey]);
 
   if (!visible) return null;
 
