@@ -190,14 +190,14 @@ export function MainNav() {
         {/* ── Navigation links ── */}
         <div
           ref={linksRef}
-          className="flex-1 flex flex-col justify-center px-8 md:px-14 lg:px-20 gap-1 md:gap-0 overflow-hidden"
+          className="flex-1 flex flex-col justify-center items-center px-8 md:px-14 lg:px-20 gap-1 md:gap-0 overflow-hidden"
         >
           {routes.map((route) => {
             const isActive = pathname === route.href;
             return (
               <div
                 key={route.href}
-                className="nav-item py-1 border-b border-border/30 last:border-b-0 group"
+                className="nav-item py-1 border-b border-border/30 last:border-b-0 group w-full max-w-3xl"
               >
                 {/* Inner mask — clips vertical slide animation only */}
                 <div className="flex items-baseline justify-between overflow-hidden">
@@ -206,7 +206,7 @@ export function MainNav() {
                     onClick={() => { setOpen(false); setVisible(false); }}
                     className={cn(
                       "font-display font-black uppercase leading-none tracking-tight block",
-                      "text-[13vw] md:text-[9.5vw] lg:text-[8vw]",
+                      "text-[10vw] md:text-[7vw] lg:text-[5vw]",
                       "transition-colors duration-200",
                       isActive
                         ? "text-primary"
