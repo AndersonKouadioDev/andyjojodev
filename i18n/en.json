@@ -282,8 +282,8 @@
   },
   "services": {
     "service_1": {
-      "title": "Web App",
-      "description": "Performant and scalable web applications with Next.js, React and TypeScript."
+      "title": "Web App & Software",
+      "description": "Performant and scalable web applications and software with Next.js, React and TypeScript."
     },
     "service_2": {
       "title": "Mobile App",
