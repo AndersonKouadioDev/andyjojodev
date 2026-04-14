@@ -17,8 +17,10 @@ export function PerspectiveCard({
 }: PerspectiveCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
+  const isTouch = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouch) return;
     const card = cardRef.current;
     const glow = glowRef.current;
     if (!card) return;

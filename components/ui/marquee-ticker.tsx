@@ -27,11 +27,14 @@ export function MarqueeTicker({
     if (!track) return;
 
     const totalWidth = track.scrollWidth / 2;
+    // Slower on mobile to reduce GPU strain
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const actualSpeed = isMobile ? speed * 2 : speed;
 
     gsap.set(track, { x: direction === "left" ? 0 : -totalWidth });
     gsap.to(track, {
       x: direction === "left" ? -totalWidth : 0,
-      duration: speed,
+      duration: actualSpeed,
       ease: "none",
       repeat: -1,
     });

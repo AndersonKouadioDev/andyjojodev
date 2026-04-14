@@ -25,6 +25,8 @@ export function MagneticButton({
     const el = ref.current;
     const inner = innerRef.current;
     if (!el || !inner) return;
+    // Skip magnetic effect on touch devices
+    if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = el.getBoundingClientRect();

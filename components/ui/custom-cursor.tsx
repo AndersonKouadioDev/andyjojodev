@@ -1,13 +1,19 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
+    // Detect touch device — disable cursor entirely
+    const touch = window.matchMedia("(pointer: coarse)").matches;
+    setIsTouch(touch);
+    if (touch) return;
+
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
@@ -67,6 +73,9 @@ export function CustomCursor() {
       });
     };
   }, []);
+
+  // Don't render anything on touch devices
+  if (isTouch) return null;
 
   return (
     <>

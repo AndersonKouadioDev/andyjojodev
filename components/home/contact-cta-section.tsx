@@ -75,8 +75,8 @@ export function ContactCtaSection({ email, linkedin, github }: ContactCtaSection
       ref={sectionRef}
       className="relative py-32 md:py-48 overflow-hidden bg-primary/5"
     >
-      {/* Three.js cursor blob in background */}
-      <ThreeCursorBlob className="absolute inset-0 w-full h-full pointer-events-none" />
+      {/* Three.js cursor blob in background — desktop only */}
+      <ThreeCursorBlob className="absolute inset-0 w-full h-full pointer-events-none hidden md:block" />
 
       {/* Radial glow */}
       <div

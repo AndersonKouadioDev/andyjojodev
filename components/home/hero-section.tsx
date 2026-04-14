@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -33,6 +33,8 @@ export function HeroSection({ name, title, location, github, linkedin }: HeroSec
   const heroT = useTranslations("hero_section");
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => { setIsMobile(window.matchMedia("(max-width: 767px)").matches); }, []);
   const sectionRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLHeadingElement>(null);
@@ -113,8 +115,8 @@ export function HeroSection({ name, title, location, github, linkedin }: HeroSec
       "-=0.8"
     );
 
-    // Fog layers — slow drifting clouds
-    if (fog1Ref.current && fog2Ref.current && fog3Ref.current) {
+    // Fog layers — slow drifting clouds (desktop only)
+    if (!isMobile && fog1Ref.current && fog2Ref.current && fog3Ref.current) {
       gsap.set([fog1Ref.current, fog2Ref.current, fog3Ref.current], { opacity: 0 });
 
       // Fog 1: slides from left, slow

@@ -83,6 +83,8 @@ interface ThreeHeroOrbProps {
 export function ThreeHeroOrb({ className }: ThreeHeroOrbProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [preloaded, setPreloaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => { setIsMobile(window.matchMedia("(max-width: 767px)").matches); }, []);
 
   // Preload model only when the canvas container enters the viewport
   useEffect(() => {
@@ -113,26 +115,33 @@ export function ThreeHeroOrb({ className }: ThreeHeroOrbProps) {
     >
       <Canvas
         camera={{ position: [0, 0, 3.8], fov: 55 }}
-        gl={{ antialias: true, alpha: true }}
-        dpr={[1, 2]}
+        gl={{ antialias: !isMobile, alpha: true }}
+        dpr={isMobile ? [1, 1] : [1, 2]}
+        frameloop={isMobile ? "demand" : "always"}
       >
         <ambientLight intensity={0.9} />
         <pointLight position={[3, 5, 4]} intensity={8} color="#FF4D00" />
         <pointLight position={[-4, 2, 3]} intensity={4} color="#D4A852" />
-        <pointLight position={[0, 2, 5]} intensity={3} color="#ffffff" />
-        <pointLight position={[0, -1, -3]} intensity={2} color="#FF4D00" />
-        <pointLight position={[0, -4, 2]} intensity={2} color="#FF6A20" />
+        {!isMobile && (
+          <>
+            <pointLight position={[0, 2, 5]} intensity={3} color="#ffffff" />
+            <pointLight position={[0, -1, -3]} intensity={2} color="#FF4D00" />
+            <pointLight position={[0, -4, 2]} intensity={2} color="#FF6A20" />
+          </>
+        )}
 
-        {/* Mouse drag to rotate */}
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          enableDamping={true}
-          dampingFactor={0.06}
-          rotateSpeed={0.6}
-          minPolarAngle={Math.PI / 6}
-          maxPolarAngle={Math.PI - Math.PI / 6}
-        />
+        {/* Mouse drag to rotate — desktop only */}
+        {!isMobile && (
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            enableDamping={true}
+            dampingFactor={0.06}
+            rotateSpeed={0.6}
+            minPolarAngle={Math.PI / 6}
+            maxPolarAngle={Math.PI - Math.PI / 6}
+          />
+        )}
 
         <StatueMesh />
       </Canvas>
